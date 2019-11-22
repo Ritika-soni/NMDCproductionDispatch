@@ -1,0 +1,168 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 12, 2019, 4:30:23 PM
+    Author     : Ritika Soni
+*/
+    html,body {
+        //background-color: red; /* For browsers that do not support gradients */
+        background: url("../images/background.jpg") #222 no-repeat center center fixed;      
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+         margin:0;
+        padding:0;
+        height:100%;
+    }
+    
+    .user_card {
+		height: 400px;
+		width: 350px;
+		margin-top: auto;
+		margin-bottom: auto;
+		background: #2ab1ce;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 10px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius: 5px;
+ 
+		}
+                
+      .brand_logo_container {
+		position: absolute;
+		height: 170px;
+		width: 170px;
+		top: -75px;
+		border-radius: 50%;
+		background: #C8C3C3;
+		padding: 10px;
+		text-align: center;
+		}
+        .brand_logo {
+		height: 150px;
+		width: 150px;
+		border-radius: 50%;
+		border: 2px solid white;
+		}
+
+        .form_container {
+		margin-top: 100px;
+		}
+	.login_btn {
+		width: 100%;
+		background: #4d4d4d !important;
+		color: white !important;
+		}
+        .login_btn:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+        }
+        .login_container {
+            padding: 0 2rem;
+        }        
+                
+    h1 {
+        font-family:arial; 
+        color:red;
+        text-decoration: underline;
+        text-align: center;
+    }
+
+    validate {                                         
+        margin-left: 70px; 
+        font-weight: bold ; 
+        float: left; 
+        clear: left; 
+        width: 100px; 
+        text-align: left; 
+        margin-right: 10px; 
+        font-family:sans-serif,bold, Arial, Helvetica; 
+        font-size:14px; 
+    } 
+
+   .register  {
+        color: white;
+        text-decoration: none;
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects;
+    }
+    
+    .register:hover {
+        color: white;
+        transform: scale(1.1);
+    }
+    
+ .center {
+    text-align: center;
+    list-style-position: inside;
+  }
+  
+  #regForm table {     
+      margin: 0 auto;
+      width: 70%;
+  }
+  
+  
+  #regForm table td:nth-child(1) {
+      width:30%
+  }
+  
+  #message {
+      color:red;
+      font-style: italic;
+      text-align: center;
+      margin:0 auto;
+      display: block;
+      
+  }
+  
+  input[type='checkbox'] {
+      margin-left: 10px;
+  }  
+   
+  /* Hide the row*/
+  .hide {
+      display:none;
+  }
+  
+  .heading {
+    color:green;
+    text-decoration:underline;    
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-family: 'Crete Round', serif;
+
+}
+
+.date {
+    font-size: 1.75rem;
+}
+  
+  div .label {
+    display: block;
+    padding:0;
+} 
+
+.vcenter {
+    display: flex;
+    align-items: center;
+    height:100vh;
+}
+
+.logo-container{
+  margin: auto;
+  margin-bottom: 10px;
+  width:200px;
+  height:30px;  
+}
+

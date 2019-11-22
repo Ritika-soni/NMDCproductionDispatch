@@ -20,10 +20,6 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>Logout</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ritika</servlet-name>
-        <servlet-class>ritika</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>register</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -47,10 +43,6 @@
     <listener>
         <listener-class>CountUsersListener</listener-class>
     </listener>
-    <servlet-mapping>
-        <servlet-name>ritika</servlet-name>
-        <url-pattern>/ritika</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

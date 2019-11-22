@@ -1,5 +1,12 @@
  <%@page contentType="text/html" import="java.util.Date" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
     <head>
         <title>Daily production and dispatch details</title>
@@ -7,7 +14,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
-        <link href="https://fonts.googleapis.com/css?family=Crete+Round&display=swap" rel="stylesheet">
          <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +26,13 @@
         <h2 class="heading">DAILY PRODUCTION DETAILS </h2> 
         <h2 id="dep" class="heading"></h2>
         <div class="container">
-        <div class='date float-right font-weight-bold text-info bg-warning'><%= currentDate %> </div>
+            <div class='date float-right font-weight-bold text-info bg-warning'><%= currentDate %> </div>
         </div>  
          <div class='container'>
-          <div class="row">
-          <form action="ritika"  method="post" id='ritForm'>       
-            
-        <table class="table">
+          <div class>
+              
+           <div class="label label-default"><h3>Production</h3></div> 
+        <table class="table" id='tblFeed'>
         <thead class="thead-dark">
             <tr>
                 <th>PRODUCTION</th>
@@ -38,20 +44,22 @@
             </tr>
         </thead>
         <tbody>
-            <div class="label label-warning"><h3>Production</h3></div>
             <tr>
                 <td>Feed</td>
-                <td><input type="number" id="feed_I" name="Feed-I" placeholder='Feed - I' value="" pattern="^\d*$"  title="Feed - I" required onblur="calculateOnDateFeed(this)"></td>
-                <td><input type="number" id="feed_II"  name="Feed-II" placeholder='Feed-  II' value="" pattern="^\d*$"  title="Feed - II" required onblur="calculateOnDateFeed(this)"></td>
-                <td><input type="number" id="feed_III" name="Feed-II" placeholder='Feed -  III' value="" pattern="^\d*$"  title="Feed -  III" required onblur="calculateOnDateFeed(this)"></td>
+                <td><input type="number" id="feed_I" name="Feed-I" placeholder='Feed - I' shift='I' value="" pattern="^\d*$"  title="Feed - I" required onblur="calculateOnDateFeed(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="feed_II"  name="Feed-II" placeholder='Feed-  II' shift='II' value="" pattern="^\d*$"  title="Feed - II" required onblur="calculateOnDateFeed(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="feed_III" name="Feed-II" placeholder='Feed -  III' shift='III' value="" pattern="^\d*$"  title="Feed -  III" required onblur="calculateOnDateFeed(this);calTotalUtil(this)"></td>
                 <td> <input type="number" id="feed_onDate" name="Feed-onDate" placeholder='Feed - On-Date'  default value="0"  title="Feed - ON-DATE" disabled  > </td>
                 <td> <input type="number" id="feed_cumm" name="Feed-cum" placeholder='Feed - CUM' default value="0"  title="Feed - CUM" disabled  > </td>
             </tr>
         </tbody>     
     </table>
-<div>
-    <div class="label label-warning"><h3>Stoppages</h3></div>
-<select id="stoppage" multiple>            
+          </div>
+         
+<!-- STOPPAGES BLOCK START-->        
+<div>   
+<div class="label label-default"><h3>Stoppages</h3></div>      
+<select id="stoppages" multiple>            
     <option>NO ORE</option>
     <option>PSP FULL</option>
     <option>BOULDER JAM</option>
@@ -78,20 +86,21 @@
         <tbody>            
             <tr class='hide'>
                 <td>No Stoppage</td> 
-                <td><input type="number" step=".01" max="8" name="Stop-I" placeholder='Stoppage -  I' shift='I'  title="Stoppage -  I"  onblur="calculateOnDateStoppage(this); return calTotalUtil(this); " ></td>
-                <td><input type="number" step=".01" max="8"  name="Stop-II" placeholder='Stoppage -  II'  shift='II' title="Stoppage -  II"  onblur="calculateOnDateStoppage(this); return calTotalUtil(this)"  ></td>
-                <td><input type="number" step=".01" max="8"  name="Stop-III" placeholder='Stoppage -  III' shift='III' title="Stoppage -  III"  onblur="calculateOnDateStoppage(this); return calTotalUtil(this)" ></td>
+                <td><input type="number" step=".01" max="8" name="Stop-I" placeholder='Stoppage -  I' shift='I'  title="Stoppage -  I"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this); " ></td>
+                <td><input type="number" step=".01" max="8"  name="Stop-II" placeholder='Stoppage -  II'  shift='II' title="Stoppage -  II"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)"  ></td>
+                <td><input type="number" step=".01" max="8"  name="Stop-III" placeholder='Stoppage -  III' shift='III' title="Stoppage -  III"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Stop-onDate" placeholder='Stoppage - ON-DATE' default value="0" title="Stoppage - ON-DATE" disabled ></td>
                 <td><input type="number" step=".01" name="Stop-cum" placeholder='Stoppage - CUM' default value="0" title="Stoppage - CUM" disabled > </td>
                 <td><button type='button' class='btn btn-danger btn-sm' name='btnRemoveStoppages' onclick="removeStoppage(this)"><i class="fa fa-trash"></i>  Delete</button></td>
             </tr>
       </tbody>
      </table>
- </div>
-</div>
-              
+ 
+<!-- STOPPAGES BLOCK ENDS-->
+
+<!-- BREAKDOWN BLOCK START-->      
  <div>
-<div class="label label-warning"><h3>Breakdowns</h3></div>
+<div class="label label-default"><h3>Breakdowns</h3></div>
 <select id="breakdown" multiple>            
     <option>NO ORE</option>
     <option>PSP FULL</option>
@@ -119,9 +128,9 @@
         <tbody>            
             <tr class='hide'>
                 <td>No Breakdown</td> 
-                <td><input type="number" step=".01" max="8" name="Breakdown-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown-  I"  onblur="calculateOnDateBreakdown(this); return calTotalUtil(this); " ></td>
-                <td><input type="number" step=".01" max="8"  name="Breakdown-II" placeholder='Breakdown -  II'  shift='II' title="Breakdown -  II"  onblur="calculateOnDateBreakdown(this); return calTotalUtil(this)"  ></td>
-                <td><input type="number" step=".01" max="8"  name="Breakdown-III" placeholder='Breakdown -  III' shift='III' title="Breakdown -  III"  onblur="calculateOnDateBreakdown(this); return calTotalUtil(this)" ></td>
+                <td><input type="number" step=".01" max="8" name="Breakdown-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown-  I"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this); " ></td>
+                <td><input type="number" step=".01" max="8"  name="Breakdown-II" placeholder='Breakdown -  II'  shift='II' title="Breakdown -  II"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)"  ></td>
+                <td><input type="number" step=".01" max="8"  name="Breakdown-III" placeholder='Breakdown -  III' shift='III' title="Breakdown -  III"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Breakdown-onDate" placeholder='Breakdown - ON-DATE' default value="0" title="Breakdown - ON-DATE" disabled ></td>
                 <td><input type="number" step=".01" name="Breakdown-cum" placeholder='Breakdown - CUM' default value="0" title="Breakdown - CUM" disabled > </td>
                 <td><button type='button' class='btn btn-danger btn-sm' name='btnBreakdowns' onclick="removeBreakdown(this)"><i class="fa fa-trash"></i>  Delete</button></td>
@@ -129,7 +138,12 @@
       </tbody>
      </table>
  </div>
-</div>             
+</div>      
+<!-- BREAKDOWN BLOCK ENDS-->
+
+<!-- UTILIZATION BLOCK START-->   
+<div>
+<div class="label label-default"><h3>Utilization</h3></div>      
         <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -143,30 +157,39 @@
             </tr>
         </thead>
         <tbody>
-            
-            <div class="label label-warning"><h3>Utilization (Hrs.)</h3></div>
+            <p> <font color="#800000"> <b> Utilized Hr. </b> </p>
             <tr>
                      <td>UTL.<br>
                          6550/6650-CR <br>
                      </td>
-                <td><input type="number" step=".01" id="UTL_I" name="UTL-I" placeholder='UTL. -  I'   value="0"  pattern="^\d*(\.\d{0,2})?$"  title="UTL. -  I"   disabled onblur="calculateSum(this)"></td>
-                <td><input type="number" step=".01" id="UTL_II" name="UTL-II" placeholder='UTL. -  II'  value="0"   pattern="^\d*(\.\d{0,2})?$" title="UTL. -  II"   disabled onblur="calculateSum(this)"></td>
-                <td><input type="number" step=".01" id="UTL_III" name="UTL-III" placeholder='UTL. -  III'  value="0"  pattern="^\d*(\.\d{0,2})?$"  title="UTL. -  III"   disabled ></td>
-                 <td><input type="number" step=".01" id="UTL_onDate" name="UTL-onDate" placeholder='UTL. - ON-DATE'  value="0"  title="UTL. - ON-DATE" disabled ></td>
+                <td><input type="number" step=".01" id="UTL_I" name="UTL-I" placeholder='UTL. -  I'   value="0"  pattern="^\d*(\.\d{0,2})?$"  title="UTL. -  I"   disabled></td>
+                <td><input type="number" step=".01" id="UTL_II" name="UTL-II" placeholder='UTL. -  II'  value="0"   pattern="^\d*(\.\d{0,2})?$" title="UTL. -  II"   disabled></td>
+                <td><input type="number" step=".01" id="UTL_III" name="UTL-III" placeholder='UTL. -  III'  value="0"  pattern="^\d*(\.\d{0,2})?$"  title="UTL. -  III"   disabled></td>
+                 <td><input type="number" step=".01" id="UTL_onDate" name="UTL-onDate" placeholder='UTL. - ON-DATE'  title="UTL. - ON-DATE" disabled ></td>
                 <td><input type="number" step=".01" id="UTL_cumm" name="UTL-cum" placeholder='UTL. - CUM'  value="0" title="UTL. - CUM" disabled > </td>
             </tr>
       </tbody>
        </table>        
-    
+</div>
+<div>
+    <div class="progress">
+        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+            Utilization Hr. 0%
+        </div>
+    </div>
+<!-- UTILIZATION BLOCK ENDS-->  
     <br>
         
-    <article>
-            
-           <div class="label label-warning"><h3>Scheduled Hr.</h3></div>
-            <mark> SHIFT I - 8hr. / </mark>   
-             <mark> SHIFT II - 8hr. / </mark>  
-              <mark> SHIFT III - 8hr. </mark>  
-    </article>     
+<!-- SCHEDULED HR BLOCK START-->  
+<div>
+    <p> <font color="#800000"> <b> Scheduled Hr. </b> </p>
+
+    <mark> SHIFT I - 8hr. / </mark>   
+     <mark> SHIFT II - 8hr. / </mark>  
+      <mark> SHIFT III - 8hr. </mark>  
+</div>
+      <!-- SCHEDULED HR BLOCK START-->         
      <center>
        <button type="submit" class='btn btn-success btn-sm mr-3'>SUBMIT</button> 
        <a  href="productionmenu.html">Go Back</a>
@@ -175,8 +198,8 @@
 
          </div>
          </div>
-        
-           
+        </div>
+          
       
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -186,18 +209,41 @@
 
     <script type="text/javascript">
         const SCHEDULED_HR =8;
+        const SHIFTS = {
+                FIRSTSHIFT : "I",
+                SECONDSHIFT : "II",
+                THIRDSHIFT: 'III'
+        }
+            
+        this.stateObj = {
+            currentShift: SHIFTS.FIRSTSHIFT,
+            currentFeed : 0,
+            currentUtlHr : 0,
+            currentBreakdowns : 0,
+            currentStoppages :0,
+            onDateStoppageAndBreakdown:0
+        }
         
         //update the ondate feed value based on change in shift's feed
-        function calculateOnDateFeed(field) {   
+        function calculateOnDateFeed(field) {  
                 let currentRow = $(field).closest("tr");
+                const currentShift = $(field).attr("shift");
+                switch(currentShift){
+                    case "I" : this.stateObj.currentShift = SHIFTS.FIRSTSHIFT;
+                              break;
+                    case "II" : this.stateObj.currentShift = SHIFTS.SECONDSHIFT;
+                               break;
+                    case "III" : this.stateObj.currentShift = SHIFTS.THIRDSHIFT;
+                               break;
+                }
                 let first =  parseInt($("input[id$='_I']",currentRow).val()) ||0 ;
                 let second =  parseInt($("input[id$='_II']",currentRow).val()) ||0;
                 let third =  parseInt($("input[id$='_III']",currentRow).val())||0;              
                 let calOnDate = first + second + third;
-                $("input[id$='_onDate']",currentRow).val(calOnDate);
+                $("input[id$='_onDate']",currentRow).val(calOnDate);               
          } 
          
-        //update the ondate stoppage value based on change in shift's stoppage
+  /*      //update the ondate stoppage value based on change in shift's stoppage
         function calculateOnDateStoppage(field) {   
             let currentRow = $(field).closest("tr");
             let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
@@ -206,8 +252,8 @@
             let calOnDate = first + second + third;
             $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
          } 
-          
-           //update the ondate breakdown value based on change in shift's stoppage
+         
+          //update the ondate breakdown value based on change in shift's stoppage
         function calculateOnDateBreakdown(field) {   
             let currentRow = $(field).closest("tr");
             let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
@@ -216,63 +262,74 @@
             let calOnDate = first + second + third;
             $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
          }  
-          
-          //calculates total of the stoppages for the shift
-            function calTotalStoppageAndBreakdown(curObj) { 
-                let total=0;
-                let currentName = $(curObj).prop("name");
-                let stoppageFields = $(`input[name=${currentName}]`).not(":first");
-                stoppageFields.each((index,stoppage) => {
-                 //console.log(stoppage);
-                  total += parseFloat(stoppage.value)||0;
+       */  
+            //update the ondate stoppage and breakdown value based on change in shift's stoppage/breakdown
+        function calculateOnDateStoppageBreakdown(field) {   
+            let currentRow = $(field).closest("tr");
+            let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
+            let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
+            let third =  parseFloat($("input[name$='-III']",currentRow).val()) ||0;              
+            let calOnDate = first + second + third;
+            $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
+         }  
+                  
+            //calculates total of the stoppages for the shift
+           function calTotalStoppageAndBreakdown(curObj) { 
+                let total=0; 
+                //const currentShift = $(curObj).attr("shift");
+                const currentShift =  this.stateObj.currentShift;
+                let stoppageAndBreakdownFields = $('#tblBreakdown tr,#tblStoppages tr').not('.hide').find('input[shift="'+currentShift+'"]'); 
+                stoppageAndBreakdownFields.each((index,reason) => {
+                       total += parseFloat(reason.value)||0;
                  });
                  
                 if(total > SCHEDULED_HR ){
-                 alert(`Verify that the total stoppages should not be more than ${SCHEDULED_HR} hrs`);  
+                 alert("Verify that the total stoppages + breakdown should not be more than"+ SCHEDULED_HR+ " hrs");  
                  $(curObj).val('');
                  return false;
                 }
                 return total.toFixed(2);
-               }
-            
+            }
+                    
             //updates the utilisation hour for the shfit
             function calTotalUtil(curObj) {
                 let utilHr = (SCHEDULED_HR - calTotalStoppageAndBreakdown(curObj)).toFixed(2);
-                let currentShift = $(curObj).attr("shift");
-                
-                document.getElementById(`UTL_${currentShift}`).value = utilHr;
+                let currentShift = $(curObj).attr("shift");        
+                let currentShiftUtilId = "UTL_"+currentShift;
+                document.getElementById(currentShiftUtilId).value = utilHr;
                 
                 let utilI = document.querySelector("#UTL_I").value;
                 let utilII = document.querySelector("#UTL_II").value;
                 let utilIII = document.querySelector("#UTL_III").value;
                 let utilOnDate = document.querySelector("#UTL_onDate");
                 
-                let totalUtil = parseFloat(utilI) +parseFloat(utilII)+parseFloat(utilIII);
-
+                let totalUtil = parseFloat(utilI) + parseFloat(utilII)+ parseFloat(utilIII);
                 utilOnDate.value = totalUtil.toFixed(2);
+                updateUtilizationProgress();
            }     
    
     
-        function checkExist(compareText, tableId) {
+        function checkExist(compareText, tblName) { 
          let isExist = false;
-         $(`${tableId} tbody tr`).find("td:first").each( (index,column) => { 
-            let a = $(column).html();
-            if(a === compareText) { 
-              isExist = true;
-            }
+         let selector = "#"+tblName+" tbody tr"; 
+         $(selector).find("td:first").each( (index,column) => { 
+         let a = $(column).html();
+         if(a === compareText) { 
+           isExist = true;
+         }
         });
         return isExist;
         }
 
 
         $("#btnAddStoppages").on("click", function () {
-            let selected = $("#stoppage").val();  
+            let selected = $("#stoppages").val();  
             if(!selected ) {
                 alert("select atleast one stoppage reason to be added");
                 return;
             }
             for(let i=0;i<selected.length;i++){ 
-                if(!checkExist(selected[i]),"tblStoppages" ) {       
+                if(!checkExist(selected[i],"tblStoppages")) {       
                     let row = $("#tblStoppages tbody tr:first").clone(false);
                     $(row).removeClass('hide');
                     $("#tblStoppages").removeClass('hide');
@@ -280,16 +337,16 @@
                     $("#tblStoppages tbody").append(row);
                    }     
                 }
-            });  
+            });       
             
-        $("#btnAddBreakdowns").on("click", function () {
+         $("#btnAddBreakdowns").on("click", function () {
             let selected = $("#breakdown").val();  
             if(!selected ) {
                 alert("select atleast one breakdown reason to be added");
                 return;
             }
             for(let i=0;i<selected.length;i++){ 
-                if(!checkExist(selected[i], "tblBreakdown" )) {       
+                if(!checkExist(selected[i],"tblBreakdown")) {       
                     let row = $("#tblBreakdown tbody tr:first").clone(false);
                     $(row).removeClass('hide');
                     $("#tblBreakdown").removeClass('hide');
@@ -297,14 +354,13 @@
                     $("#tblBreakdown tbody").append(row);
                    }     
                 }
-            });     
-   
+            });    
         
-        function removeStoppage(btn) {
+        function removeStoppage(btn) { 
             let row = $(btn).closest("tr")
             let stoppageType = $(row).find("td:first").html();
             $(btn).closest("tr",row).remove();
-            $('#stoppage').multiselect('deselect', [stoppageType]); 
+            $('#stoppages').multiselect('deselect', [stoppageType]); 
             const countRows = $('#tblStoppages').find("tr").length;
             if(countRows <3) { //one header row , second hidden row
                 $("#tblStoppages").addClass('hide');                
@@ -317,8 +373,7 @@
             calTotalUtil(thirdShiftObj);
         }    
         
-        
-            function removeBreakdown(btn) {
+         function removeBreakdown(btn) {
             let row = $(btn).closest("tr")
             let breakdownType = $(row).find("td:first").html();
             $(btn).closest("tr",row).remove();
@@ -333,19 +388,64 @@
             calTotalUtil(firstShiftObj);
             calTotalUtil(secondShiftObj);
             calTotalUtil(thirdShiftObj);
-        }   
-        
-        
-        $(function() {            
-            let dep = "Deposit- "+window.location.search.split("=")[1];                        
-            $("#dep").text(dep);    
+        }    
+              
+    
+      //calculates total of the stoppages for the shift
+        /*    function calTotalStoppage(curObj) {            
+                let total=0;
+                let currentName = $(curObj).prop("name");
+                const stoppageFieldSelector = "[name="+ currentName+ "]"
+                let stoppageFields = $(stoppageFieldSelector).not(":first");
+                stoppageFields.each((index,stoppage) => {                
+                  total += parseFloat(stoppage.value)||0;
+                 });
+                 
+                if(total > SCHEDULED_HR ){
+                 alert("Verify that the total stoppages should not be more than" SCHEDULED_HR+" hrs");  
+                 $(curObj).val('');
+                 calculateOnDateStoppage(curObj);
+                 return false;
+                }
+                return total.toFixed(2);
+               }
+               */
+        function updateUtilizationProgress() {
             
-            $('#stoppage').multiselect({
+            const currentShift = this.stateObj.currentShift;
+            let onDateUtil = parseFloat(document.querySelector("#UTL_onDate").value);
+            let utilPer = 0;
+            let availHrs = 0;
+            if(currentShift === 'I') {
+                availHrs = SCHEDULED_HR;
+            } else if(currentShift === 'II') {
+                availHrs = SCHEDULED_HR * 2;
+            } else {
+                availHrs = SCHEDULED_HR * 3;
+            }                 
+            console.log("availHrs",availHrs);
+            utilPer = ((onDateUtil)*100/availHrs).toFixed(2);
+              
+            //let utilOnDate = parseFloat(document.querySelector("#UTL_onDate").value).toFixed(2);
+            //let util = (utilOnDate/parseInt(SCHEDULED_HR * 3) *100).toFixed(2) +"%";
+            let util = utilPer +"%";
+            let utilizationText = "Utilization : "+util+" till "+this.stateObj.currentShift + " shift";
+            $("div .progress-bar").text(utilizationText);
+            $("div .progress-bar").width(util)
+        }
+                   
+        $(function() {           
+            
+            
+            const dep = "Deposit- "+window.location.search.split("=")[1];                        
+            $("#dep").text(dep);    
+        
+            $('#stoppages').multiselect({
                 includeSelectAllOption: true,
                 nonSelectedText: 'No Stoppages',
                 numberDisplayed: 1,        
                 enableCaseInsensitiveFiltering: true,        
-            }); 
+            });
             
             $('#breakdown').multiselect({
                 includeSelectAllOption: true,
@@ -353,8 +453,10 @@
                 numberDisplayed: 1,        
                 enableCaseInsensitiveFiltering: true,        
             });
-        });
-
+            
+                 
+            
+          });
         </script>  
 
 

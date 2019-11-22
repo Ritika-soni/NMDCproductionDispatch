@@ -8,14 +8,62 @@ and open the template in the editor.
     Author     : Ritika Soni
 */
     html,body {
-        background-color: red; /* For browsers that do not support gradients */
         background-image: radial-gradient(white, #8FA1D7); /* Standard syntax (must be last) */
         background-repeat: no-repeat;
         min-height: 100vh;
         margin:0;
         padding:0;
     }
+    
+    .user_card {
+		height: 400px;
+		width: 350px;
+		margin-top: auto;
+		margin-bottom: auto;
+		background: #2ab1ce;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 10px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius: 5px;
+ 
+		}
+                
+      .brand_logo_container {
+		position: absolute;
+		height: 170px;
+		width: 170px;
+		top: -75px;
+		border-radius: 50%;
+		background: #C8C3C3;
+		padding: 10px;
+		text-align: center;
+		}
+        .brand_logo {
+		height: 150px;
+		width: 150px;
+		border-radius: 50%;
+		border: 2px solid white;
+		}
 
+        .form_container {
+		margin-top: 100px;
+		}
+	.login_btn {
+		width: 100%;
+		background: #4d4d4d !important;
+		color: white !important;
+		}
+        .login_btn:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+        }
+        .login_container {
+            padding: 0 2rem;
+        }        
+                
     h1 {
         font-family:arial; 
         color:red;
@@ -35,23 +83,19 @@ and open the template in the editor.
         font-size:14px; 
     } 
 
-    /*div {  
-        box-sizing: border-box; 
-        width: 100%; 
-        border: 100px solid black; 
-        float: left; 
-        align-content: center; 
-        align-items: center; 
-    } */
-  
-
-    .nmdcLogo {
-        display: block;
-        margin: 10px auto;
-        width : 150px;
+   .register  {
+        color: white;
+        text-decoration: none;
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects;
     }
     
-   .center {
+    .register:hover {
+        color: white;
+        transform: scale(1.1);
+    }
+    
+ .center {
     text-align: center;
     list-style-position: inside;
   }
@@ -77,29 +121,14 @@ and open the template in the editor.
   
   input[type='checkbox'] {
       margin-left: 10px;
-  }
-  #ritForm table {     
-      margin: 0 auto;
-      width: 70%;
-  }
-  
-  
-  #ritForm table td:nth-child(1) {
-      width:30%
-  }
-  
+  }  
+   
   /* Hide the row*/
   .hide {
       display:none;
   }
   
-  .label {
-  color: white;
-  padding: 8px;
-  font-family: Arial;
-}
-
-.heading {
+  .heading {
     color:green;
     text-decoration:underline;    
     text-align: center;
@@ -114,8 +143,21 @@ and open the template in the editor.
 .date {
     font-size: 1.75rem;
 }
-
-div .label {
+  
+  div .label {
     display: block;
     padding:0;
+} 
+
+.vcenter {
+    display: flex;
+    align-items: center;
+    height:100vh;
+}
+
+.logo-container{
+  margin: auto;
+  margin-bottom: 10px;
+  width:200px;
+  height:30px;  
 }

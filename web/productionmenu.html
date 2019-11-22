@@ -17,24 +17,58 @@ and open the template in the editor.
         <center><h2><u><font color="green">DAILY PRODUCTION DETAILS</font></u></h2></center>
         <br>
         <center>
-        <div class="container">
-         <div class="dropdown">
-        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          SELECT DEPARTMENT
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="MINE CP-14.html">Mine/CP-14</a>
-          <a class="dropdown-item" href="MINE CP-11C.html">Mine/CP-11C</a>
-          <a class="dropdown-item" href="MINE CP-11B.html">Mine/CP-11B</a>
-          <a class="dropdown-item" href="DH.jsp?dep=14">DH-14</a>
-          <a class="dropdown-item" href="DH.jsp?dep=11C">DH-11C</a>
-          <a class="dropdown-item" href="DH.jsp?dep=11B">DH-11B</a>
-          <a class="dropdown-item" href="SP-I.html">SP-I</a>
-          <a class="dropdown-item" href="SP-II_TCP.html">SP-II/TCP</a>
-        </div>
-      </div>
-        </div>
-        </center>
+            <div class="container">
+               
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Select Department</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                
+                                <h4 class="modal-title">Select Down Hill Department</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <a href="DH.jsp?dep=14" class="btn btn-danger" role="button" style="margin:25px;">DH-14</a> 
+                                    <a href="DH.jsp?dep=11C" class="btn btn-danger" role="button" style="margin:25px;">DH-11C</a> 
+                                    <a href="DH.jsp?dep=11B" class="btn btn-danger" role="button" style="margin:25px;">DH-11B</a> 
+                                </p>
+                            </div>
+                             <div class="modal-header">
+                                
+                                <h4 class="modal-title">Select Crushing Plant Department</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                   <a href="MINE CP-14.html" class="btn btn-danger" role="button" style="margin:25px;">CP-14</a>
+                                   <a href="MINE CP-11C.html" class="btn btn-danger" role="button" style="margin:25px;">CP-11C</a>
+                                   <a href="MINE CP-11B.html" class="btn btn-danger" role="button" style="margin:25px;">CP-11B</a> 
+                                </p>
+                            </div>
+                             <div class="modal-header">
+                                
+                                <h4 class="modal-title">Select Screening Plant Department</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <a href="SP-I.html" class="btn btn-danger" role="button" style="margin:25px;">SP-I</a>
+                                    <a href="SP-II_TCP.html" class="btn btn-danger" role="button" style="margin:25px;">SP-II/TCP</a>
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         <br>
         <center>
         <a  href="menu.jsp">Go Back</a>
