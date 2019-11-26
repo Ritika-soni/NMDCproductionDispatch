@@ -24,7 +24,7 @@ and open the template in the editor.
     </head>
     <body>
         <h2 class="heading">DAILY PRODUCTION DETAILS </h2> 
-        <h2 id="dep" class="heading"></h2>
+        <h2 class="heading"> SCREENING PLANT - I</h2>
         <div class="container">
             <div class='date float-right font-weight-bold text-info bg-warning'><%= currentDate %> </div>
         </div>  
@@ -32,7 +32,7 @@ and open the template in the editor.
           <div class>
               
            <div class="label label-default"><h3>Production</h3></div> 
-        <table class="table" id='tblFeed'>
+        <table class="table" id='tblProduction'>
         <thead class="thead-dark">
             <tr>
                 <th>PRODUCTION</th>
@@ -45,12 +45,60 @@ and open the template in the editor.
         </thead>
         <tbody>
             <tr>
-                <td>Feed</td>
-                <td><input type="number" id="feed_I" name="Feed-I" placeholder='Feed - I' shift='I' value="" pattern="^\d*$"  title="Feed - I" required onblur="calculateOnDateFeed(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="feed_II"  name="Feed-II" placeholder='Feed-  II' shift='II' value="" pattern="^\d*$"  title="Feed - II" required onblur="calculateOnDateFeed(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="feed_III" name="Feed-II" placeholder='Feed -  III' shift='III' value="" pattern="^\d*$"  title="Feed -  III" required onblur="calculateOnDateFeed(this);calTotalUtil(this)"></td>
-                <td> <input type="number" id="feed_onDate" name="Feed-onDate" placeholder='Feed - On-Date'  default value="0"  title="Feed - ON-DATE" disabled  > </td>
-                <td> <input type="number" id="feed_cumm" name="Feed-cum" placeholder='Feed - CUM' default value="0"  title="Feed - CUM" disabled  > </td>
+                <td>LUMP</td>
+                <td><input type="number" id="lump_I" name="LUMP-I" placeholder='LUMP -  I' shift='I' value="" pattern="^\d*$"  title="LUMP-  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="lump_II"  name="LUMP-II" placeholder='LUMP -  II' shift='II' value="" pattern="^\d*$"  title="LUMP -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="lump_III"  name="LUMP-III" placeholder='LUMP -  III' shift='III' value="" pattern="^\d*$"  title="LUMP -  III" onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="lump_onDate" name="LUMP-ON DATE" placeholder='LUMP - ON-DATE'  title="LUMP - ON-DATE"  disabled ></td>
+                <td><input type="number" id="lump_cumm" name="LUMP-CUM"  placeholder='LUMP -  CUM'  title="LUMP -  CUM" disabled  ></td>
+                </tr>
+            <tr>
+                <td>FEED</td>
+                 <td><input type="number" id="feed_I"  name="FEED-I" placeholder='FEED -  I' shift='I' value="" pattern="^\d*$"  title="FEED -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="feed_II" name="FEED-II" placeholder='FEED -  II' shift='II' value="" pattern="^\d*$"  title="FEED -  II" onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="feed_III" name="FEED-III" placeholder='FEED -  III' shift='III' value="" pattern="^\d*$"  title="FEED -  III" onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="feed_onDate" name="FEED-ON-DATE" placeholder='FEED-  ON-DATE'  title="FEED -  ON-DATE"  disabled ></td>
+                <td><input type="number" id="feed_cumm" name="FEED-CUM" placeholder='FEED -  CUM'  title="FEED -  CUM" disabled  ></td>
+            </tr>
+            <tr>
+                <td>FINE</td>
+                <td><input type="number" id="fine_I" name="FINE-I" placeholder='FINE -  I' shift='I' value="" pattern="^\d*$"  title="FINE -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="fine_II" name="FINE-II" placeholder='FINE -  II' shift='II' value="" pattern="^\d*$"  title="FINE -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="fine_III" name="FINE-III" placeholder='FINE -  III' shift='III' value="" pattern="^\d*$"  title="FINE  -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="fine_onDate" name="FINE-ON-DATE" placeholder='FINE -  ON-DATE'   title="FINE -  ON-DATE" disabled ></td>
+                <td><input type="number" id="fine_cumm" name="FINE-CUM" placeholder='FINE -  CUM'   title="FINE -  CUM" disabled  ></td>
+            </tr>
+            <tr>
+                <td>NPO LP(923)</td>
+                <td><input type="number" id="npo_lp_I" name="NPO LP(923)-I" placeholder='NPO LP(923) -  I' shift='I' value="" pattern="^\d*$"  title="NPO LP(923) -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number"  id="npo_lp_II" name="NPO LP(923)-II" placeholder='NPO LP(923) -  II' shift='II' value="" pattern="^\d*$"  title="NPO LP(923) -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number"  id="npo_lp_III"   name="NPO LP(923)-III" placeholder='NPO LP(923) -  III' shift='III' value="" pattern="^\d*$"  title="NPO LP(923)  -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number"  id="npo_lp_onDate"   name="NPO LP(923)-ON-DATE" placeholder='NPO LP(923) -  ON-DATE'  title="NPO LP(923) -  ON-DATE" disabled ></td>
+                <td><input type="number"  id="npo_lp_cumm"  name="NPO LP(923)-CUM" placeholder='NPO LP(923) -  CUM'   title="NPO LP(923) -  CUM" disabled  ></td>
+            </tr>
+            <tr>
+                <td>NPO SIIL</td>
+                <td><input type="number"  id="npo_siil_I" name="NPO SIIL-I" placeholder='NPO SIIL -  I' shift='I' value="" pattern="^\d*$"  title="NPO SIIL -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number"  id="npo_siil_II"  name="NPO SIIL-II" placeholder='NPO SIIL -  II' shift='II' value="" pattern="^\d*$"  title="NPO SIIL -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number"  id="npo_siil_III"  name="NPO SIIL-III" placeholder='NPO SIIL -  III' shift='III' value="" pattern="^\d*$"  title="NPO SIIL -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number"  id="npo_siil_onDate"  name="NPO SIIL-ON-DATE" placeholder='NPO SIIL -  ON-DATE'   title="NPO SIIL -  ON-DATE"  disabled ></td>
+                <td><input type="number"  id="npo_siil_cumm"  name="NPO SIIL-CUM" placeholder='NPO SIIL -  CUM'   title="NPO SIIL -  CUM"  disabled ></td>
+            </tr>
+            <tr>
+                <td>SLIME/317</td>
+                <td><input type="number"  id="slime_I" name="SLIME/317-I" placeholder='SLIME/317 -  I' shift='I' value="" pattern="^\d*$"  title="SLIME/317-  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="slime_II" name="SLIME/317-II" placeholder='SLIME/317 -  II' shift='II' value="" pattern="^\d*$"  title="SLIME/317 -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="slime_III" name="SLIME/317-III" placeholder='SLIME/317 -  III' shift='III' value="" pattern="^\d*$"  title="SLIME/317 -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="slime_onDate" name="SLIME/317-ON-DATE" placeholder='SLIME/317 -  ON-DATE'   title="SLIME/317 -  ON-DATE"  disabled ></td>
+                <td><input type="number" id="slime_cumm" name="SLIME/317-CUM" placeholder='SLIME/317 -  CUM'   title="SLIME/317 -  CUM"  disabled ></td>
+            </tr>
+            <tr>
+                <td>FOH</td>
+                <td><input type="number" id="foh_I" name="FOH-I" placeholder='FOH -  I' shift='I' value="" pattern="^\d*$"  title="FOH -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="foh_II" name="FOH-II" placeholder='FOH -  II' shift='II' value="" pattern="^\d*$"  title="FOH -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="foh_III" name="FOH-III" placeholder='FOH -  III' shift='III' value="" pattern="^\d*$"  title="FOH -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="foh_onDate" name="FOH-ON-DATE" placeholder='FOH -  ON-DATE'   title="FOH-  ON-DATE"  disabled ></td>
+                <td><input type="number" id="foh_cumm" name="FOH-CUM" placeholder='FOH -  CUM'  title="FOH -  CUM"  disabled ></td>
             </tr>
         </tbody>     
     </table>
@@ -224,7 +272,7 @@ and open the template in the editor.
             
         this.stateObj = {
             currentShift: SHIFTS.FIRSTSHIFT,
-            currentFeed : 0,
+            currentProduction : 0,
             currentUtlHr : 0,
             currentBreakdowns : 0,
             currentStoppages :0,
@@ -232,7 +280,7 @@ and open the template in the editor.
         }
         
         //update the ondate feed value based on change in shift's feed
-        function calculateOnDateFeed(field) {  
+        function calculateOnDateProduction(field) {  
                 let currentRow = $(field).closest("tr");
                 const currentShift = $(field).attr("shift");
                 switch(currentShift){
@@ -444,8 +492,7 @@ and open the template in the editor.
         $(function() {           
             
             
-            const dep = "Deposit - "+window.location.search.split("=")[1];                        
-            $("#dep").text(dep);    
+              
         
             $('#stoppages').multiselect({
                 includeSelectAllOption: true,

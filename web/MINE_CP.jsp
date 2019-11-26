@@ -32,7 +32,7 @@ and open the template in the editor.
           <div class>
               
            <div class="label label-default"><h3>Production</h3></div> 
-        <table class="table" id='tblFeed'>
+        <table class="table" id='tblProduction'>
         <thead class="thead-dark">
             <tr>
                 <th>PRODUCTION</th>
@@ -45,12 +45,28 @@ and open the template in the editor.
         </thead>
         <tbody>
             <tr>
-                <td>Feed</td>
-                <td><input type="number" id="feed_I" name="Feed-I" placeholder='Feed - I' shift='I' value="" pattern="^\d*$"  title="Feed - I" required onblur="calculateOnDateFeed(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="feed_II"  name="Feed-II" placeholder='Feed-  II' shift='II' value="" pattern="^\d*$"  title="Feed - II" required onblur="calculateOnDateFeed(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="feed_III" name="Feed-II" placeholder='Feed -  III' shift='III' value="" pattern="^\d*$"  title="Feed -  III" required onblur="calculateOnDateFeed(this);calTotalUtil(this)"></td>
-                <td> <input type="number" id="feed_onDate" name="Feed-onDate" placeholder='Feed - On-Date'  default value="0"  title="Feed - ON-DATE" disabled  > </td>
-                <td> <input type="number" id="feed_cumm" name="Feed-cum" placeholder='Feed - CUM' default value="0"  title="Feed - CUM" disabled  > </td>
+                <td>FIRST HR. </td>
+                <td><input type="number" id="first_I" name="1st Hr-I" placeholder='1st hr -  I' shift='I' value="" pattern="^\d*$"  title="1st hr -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="first_II"  name="1st Hr-II" placeholder='1st hr -  II' shift='II' value="" pattern="^\d*$"  title="1st hr -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="first_III"  name="1st Hr-III" placeholder='1st hr -  III' shift='III' value="" pattern="^\d*$"  title="1st hr -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="first_onDate" name="1st Hr-ON DATE" placeholder='1st hr - ON-DATE'  title="1st hr - ON-DATE"  disabled ></td>
+                <td><input type="number"  id="first_cumm" name="1st Hr-CUM"  placeholder='1st hr -  CUM'  title="1st hr -  CUM" disabled  ></td>
+            </tr>
+            <tr>
+                <td>LAST HR. </td>
+                <td><input type="number" id="last_I" name="Last Hr-I" placeholder='Last hr -  I' shift='I' value="" pattern="^\d*$"  title="Last hr -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="last_II"  name="Last Hr-II" placeholder='Last hr -  II' shift='II' value="" pattern="^\d*$"  title="Last hr -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="last_III"  name="Last Hr-III" placeholder='Last hr -  III' shift='III'value="" pattern="^\d*$"  title="Last hr -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="last_onDate" name="Last Hr-ON-DATE" placeholder='Last hr -  ON-DATE'   title="Last hr -  ON-DATE"  disabled ></td>
+                <td><input type="number"  id="last_cumm"  name="Last Hr-CUM" placeholder='Last hr -  CUM'   title="Last hr -  CUM"  disabled ></td>
+            </tr>
+                 <tr>
+                <td>ROM</td>
+                <td><input type="number" id="ROM_I" name="ROM Hr-I" placeholder='ROM -  I' shift='I' value="" pattern="^\d*$"  title="ROM -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="ROM_II" name="ROM Hr-II" placeholder='ROM -  II' shift='II' value="" pattern="^\d*$"  title="ROM -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="ROM_III" name="ROM Hr-III" placeholder='ROM -  III' shift='III' value="" pattern="^\d*$"  title="ROM  -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="ROM_onDate" name="ROM Hr-ON-DATE" placeholder='ROM -  ON-DATE'  title="ROM -  ON-DATE" disabled ></td>
+                <td><input type="number"  id="ROM_cumm" name="ROM Hr-CUM" placeholder='ROM -  CUM'  title="ROM -  CUM" disabled  ></td>
             </tr>
         </tbody>     
     </table>
@@ -224,7 +240,7 @@ and open the template in the editor.
             
         this.stateObj = {
             currentShift: SHIFTS.FIRSTSHIFT,
-            currentFeed : 0,
+            currentProduction : 0,
             currentUtlHr : 0,
             currentBreakdowns : 0,
             currentStoppages :0,
@@ -232,7 +248,7 @@ and open the template in the editor.
         }
         
         //update the ondate feed value based on change in shift's feed
-        function calculateOnDateFeed(field) {  
+        function calculateOnDateProduction(field) {  
                 let currentRow = $(field).closest("tr");
                 const currentShift = $(field).attr("shift");
                 switch(currentShift){
@@ -444,7 +460,7 @@ and open the template in the editor.
         $(function() {           
             
             
-            const dep = "Deposit - "+window.location.search.split("=")[1];                        
+            const dep = "CRUSHING PLANT - "+window.location.search.split("=")[1];                        
             $("#dep").text(dep);    
         
             $('#stoppages').multiselect({
