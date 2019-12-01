@@ -11,28 +11,56 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Help Page</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
             <link href="css/style.css" rel="stylesheet" type="text/css"/>
         
     </head>
     <body>
         <div class='container'>
-            <center><h2><u><font color="red">HELP</font></u></h2></center>
             <br>
-            <h3><p><font color="blue">About Us:</font></p></h3>
-            <p>AMS or Assets Management System are asset information systems that support the management of NMDC assets.
-                It is used to record & track  an asset throughout its life cycle, from procurement to disposal.<br>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h4 class="display-6">
+                        <center> BIOM KIRANDUL COMPLEX <br>
+                            DAILY PRODUCTION & DISPATCH DETAILS<br><br>
+                            <h4 class="red-text">GENERAL HELP</h4>
+                        </center>
+                    </h4>
+                    <p class="lead"><center>We help you to manage production & dispatch statistics. :)</center></p>
+                </div>
+            </div>
+          
+            <h3><p><font color="blue">ACCOUNT SETTINGS:</font></p></h3>
+            <ul>
+                <li><b>How can I create a DPDD Account? </b></li><br> 
+                    "Welcome to DPDD (DAILY PRODUCTION & DISPATCH DETAILS)!!! <br>
+                    You can easily sign up for an account through following steps : <br> </br>
+
+                    1.Go to <a href="register.html"> http://localhost:8080/NMDCproductionDispatch </a> and click "Register Here". <br>
+                    2.Sign up by filling the details asked. <br></br>
+
+                    This will include your first name, last name, token no., password and date of birth "</li>
                 <br>
-                This page consist the details like master generation, transaction & reports of the assets.   
-            </p>
-            
-            <br>
+                <u> Account created</u><i class="las la-smile"></i>
+
+                <br> </br>
+                <li><b>Updating Token no. & Password </b></li><br> 
+                "Due to security reasons, we don't allow updating/changing of token no. or Password associated with your account.<br> 
+
+                Sorry for the inconvenience." <br></br>
+                
+                <li><b>What are the benefits of becoming a registered member of DPDD?</b></li><br>
+                "After Becoming a member in DPDD, you are entitled to feed the production and dispatch statistics of NMDC LTD., KIRANDUL"
+                
+            </ul>
             <h3><p><font color="blue">Contact Us:</font></p></h3>
            
                <!-- <IMG SRC="images/CHAT.JPG" ALT="chat logo" style="width:12px;height:17px;">-->
                 <div class="list-group">
-                    <i class="fa fa-home fa-fw"></i> AMS live chat
-                   <i class="fa fa-book fa-fw"></i> WhatsApp: 0000 000 000
-                    <i class="fa fa-pencil fa-fw"></i> Email: <a href="#">aaaa@gmail.com</a>
+                    <ul>
+                        <li> <i class="lab la-whatsapp"></i> WhatsApp: 0000 000 000 <br></li>
+                        <li><i class="lar la-envelope"></i> Email: <a href="#"> aaaa@gmail.com </a></li>
+                    </ul>
                 </div>
                <!-- <u>AMS live chat</u>
                 <br>

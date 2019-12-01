@@ -71,6 +71,22 @@ and open the template in the editor.
         text-align: center;
     }
 
+    h4 {
+        font-family: helvetica; 
+        font-weight: bold;
+        color:green;
+        text-decoration: underline;
+        text-align: center;
+    }
+    
+    .red-text {
+        font-family: helvetica; 
+        font-weight: bold;
+        color:red;
+        text-decoration: underline;
+        text-align: center;
+  }
+  
     validate {                                         
         margin-left: 70px; 
         font-weight: bold ; 
@@ -161,3 +177,12 @@ and open the template in the editor.
   width:200px;
   height:30px;  
 }
+
+.var{
+    color:orange;
+}
+
+.jumbotron-fluid{
+    background-color: rgba(102,153,204,0.2);
+}
+

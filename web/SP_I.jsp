@@ -13,7 +13,7 @@ and open the template in the editor.
          
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
          <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,12 +26,12 @@ and open the template in the editor.
         <h2 class="heading">DAILY PRODUCTION DETAILS </h2> 
         <h2 class="heading"> SCREENING PLANT - I</h2>
         <div class="container">
-            <div class='date float-right font-weight-bold text-info bg-warning'><%= currentDate %> </div>
+            <div class='date float-right font-weight-bold text-info bg-warning'> <i class="las la-calendar"></i> <%= currentDate %> </div>
         </div>  
          <div class='container'>
           <div class>
               
-           <div class="label label-default"><h3>Production</h3></div> 
+              <div class="label label-default"><h3> Production</h3></div> 
         <table class="table" id='tblProduction'>
         <thead class="thead-dark">
             <tr>
@@ -106,7 +106,7 @@ and open the template in the editor.
          
 <!-- STOPPAGES BLOCK START-->        
 <div>   
-<div class="label label-default"><h3>Stoppages</h3></div>      
+<div class="label label-default"><h3> Stoppages</h3></div>      
 <select id="stoppages" multiple>            
     <option>NO ORE</option>
     <option>PSP FULL</option>
@@ -117,7 +117,7 @@ and open the template in the editor.
     <option>ELEC. B/D</option>
     <option>OTHERS</option>           
 </select>   
-<button type='button' class='btn btn-primary' id='btnAddStoppages'><i class="fa fa-plus"></i>  Add Stoppages</button>      
+<button type='button' class='btn btn-primary' id='btnAddStoppages'><i class="las la-plus-circle"></i> Add Stoppages</button>      
  <div>
      <table class="table hide" id='tblStoppages'>
         <thead class="thead-dark">
@@ -139,7 +139,7 @@ and open the template in the editor.
                 <td><input type="number" step=".01" max="8"  name="Stop-III" placeholder='Stoppage -  III' shift='III' title="Stoppage -  III"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Stop-onDate" placeholder='Stoppage - ON-DATE' default value="0" title="Stoppage - ON-DATE" disabled ></td>
                 <td><input type="number" step=".01" name="Stop-cum" placeholder='Stoppage - CUM' default value="0" title="Stoppage - CUM" disabled > </td>
-                <td><button type='button' class='btn btn-danger btn-sm' name='btnRemoveStoppages' onclick="removeStoppage(this)"><i class="fa fa-trash"></i>  Delete</button></td>
+                <td><button type='button' class='btn btn-danger btn-sm' name='btnRemoveStoppages' onclick="removeStoppage(this)"><i class="las la-trash"></i> Remove</button></td>
             </tr>
       </tbody>
      </table>
@@ -148,7 +148,7 @@ and open the template in the editor.
 
 <!-- BREAKDOWN BLOCK START-->      
  <div>
-<div class="label label-default"><h3>Breakdowns</h3></div>
+<div class="label label-default"><h3> Breakdowns</h3></div>
 <select id="breakdown" multiple>            
     <option>NO ORE</option>
     <option>PSP FULL</option>
@@ -159,7 +159,7 @@ and open the template in the editor.
     <option>ELEC. B/D</option>
     <option>OTHERS</option>           
 </select>   
-<button type='button' class='btn btn-primary' id='btnAddBreakdowns'><i class="fa fa-plus"></i>  Add Breakdown</button>      
+<button type='button' class='btn btn-primary' id='btnAddBreakdowns'><i class="las la-plus-circle"></i> Add Breakdown</button>      
  <div>
      <table class="table hide" id='tblBreakdown'>
         <thead class="thead-dark">
@@ -181,7 +181,7 @@ and open the template in the editor.
                 <td><input type="number" step=".01" max="8"  name="Breakdown-III" placeholder='Breakdown -  III' shift='III' title="Breakdown -  III"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Breakdown-onDate" placeholder='Breakdown - ON-DATE' default value="0" title="Breakdown - ON-DATE" disabled ></td>
                 <td><input type="number" step=".01" name="Breakdown-cum" placeholder='Breakdown - CUM' default value="0" title="Breakdown - CUM" disabled > </td>
-                <td><button type='button' class='btn btn-danger btn-sm' name='btnBreakdowns' onclick="removeBreakdown(this)"><i class="fa fa-trash"></i>  Delete</button></td>
+                <td><button type='button' class='btn btn-danger btn-sm' name='btnBreakdowns' onclick="removeBreakdown(this)"><i class="las la-trash"></i> Remove</button></td>
             </tr>
       </tbody>
      </table>
@@ -247,7 +247,7 @@ and open the template in the editor.
       </div>
      <center>
        <button type="submit" class='btn btn-success btn-sm mr-3'>SUBMIT</button> 
-       <a  href="productionmenu.html">Go Back</a>
+       <a  href="menu.jsp">Go Back</a>
      </center>             
    </form>
 

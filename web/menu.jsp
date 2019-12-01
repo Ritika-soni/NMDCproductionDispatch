@@ -53,17 +53,74 @@ and open the template in the editor.
                
             </div>
         </div>
+            <br>                
         <div class="container">
-       <center><h1><u><font color="green">DAILY PRODUCTION & DESPATCH DETAILS</font></u></h1></center>
-        </div>
-       <br>
-       <center>
-                <a class='btn btn-success' href="productionmenu.html" target="_top">PRODUCTION DETAILS</a> 
-       </center>
-       <br>
-       <center>
-                <a class='btn btn-success' href="MINE CP-14.html" target="_top">DESPATCH DETAILS</a>
-       </center>
+            <div class="jumbotron">
+                <center><h1><u><font color="green">DAILY PRODUCTION & DESPATCH DETAILS</font></u></h1></center>
+
+                <br>
+                <center>
+                   
+                    <div class="container">
+               
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">PRODUCTION DETAILS</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                
+                                <h4 class="modal-title">Select Down Hill Department</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <a href="DH.jsp?dep=14" class="btn btn-danger" role="button" style="margin:25px;">DH-14</a> 
+                                    <a href="DH.jsp?dep=11C" class="btn btn-danger" role="button" style="margin:25px;">DH-11C</a> 
+                                    <a href="DH.jsp?dep=11B" class="btn btn-danger" role="button" style="margin:25px;">DH-11B</a> 
+                                </p>
+                            </div>
+                             <div class="modal-header">
+                                
+                                <h4 class="modal-title">Select Crushing Plant Department</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                   <a href="MINE_CP.jsp?dep=14" class="btn btn-danger" role="button" style="margin:25px;">CP-14</a>
+                                   <a href="MINE_CP.jsp?dep=11C" class="btn btn-danger" role="button" style="margin:25px;">CP-11C</a>
+                                   <a href="MINE_CP.jsp?dep=11B" class="btn btn-danger" role="button" style="margin:25px;">CP-11B</a> 
+                                </p>
+                            </div>
+                             <div class="modal-header">
+                                
+                                <h4 class="modal-title">Select Screening Plant Department</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <a href="SP_I.jsp" class="btn btn-danger" role="button" style="margin:25px;">SP-I</a>
+                                    <a href="SP_II_TCP.jsp" class="btn btn-danger" role="button" style="margin:25px;">SP-II/TCP</a>
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+                </center>
+                <br>
+                <center>
+                    <a class='btn btn-success' href="MINE CP-14.html" target="_top">DISPATCH DETAILS</a>
+                </center>
+            </div>
+            
+        </div>    
        
         <script   src="https://code.jquery.com/jquery-3.4.1.js"   ></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
