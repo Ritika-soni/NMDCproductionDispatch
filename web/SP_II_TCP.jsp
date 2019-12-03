@@ -24,7 +24,7 @@ and open the template in the editor.
     </head>
     <body>
         <h2 class="heading">DAILY PRODUCTION DETAILS </h2> 
-        <h2 class="heading"> <center> SCREENING PLANT - II/TCP <center> </h2>
+        <div id="bounce"><h2 class="heading"> <center> SCREENING PLANT - II/TCP <center> </h2></div>
         <div class="container">
             <div class='date float-right font-weight-bold text-info bg-warning'> <i class="las la-calendar"></i> <%= currentDate %> </div>
         </div>  
