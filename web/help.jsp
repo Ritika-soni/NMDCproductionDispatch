@@ -21,22 +21,23 @@
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <h4 class="display-6">
-                        <center> BIOM KIRANDUL COMPLEX <br>
+                        <center>BIOM KIRANDUL COMPLEX<br>
                             DAILY PRODUCTION & DISPATCH DETAILS<br><br>
-                            <h4 class="red-text">GENERAL HELP</h4>
+                            
                         </center>
                     </h4>
                     <p class="lead"><center>We help you to manage production & dispatch statistics. :)</center></p>
                 </div>
             </div>
           
+            <h2 class="red-text"><div id="rect">GENERAL HELP</div></h2>
             <h3><p><font color="blue">ACCOUNT SETTINGS:</font></p></h3>
             <ul>
                 <li><b>How can I create a DPDD Account? </b></li><br> 
                     "Welcome to DPDD (DAILY PRODUCTION & DISPATCH DETAILS)!!! <br>
                     You can easily sign up for an account through following steps : <br> </br>
 
-                    1.Go to <a href="register.html"> http://localhost:8080/NMDCproductionDispatch </a> and click "Register Here". <br>
+                    1.Go to <a href="register.html">http://localhost:8080/NMDCproductionDispatch </a> and click "Register Here". <br>
                     2.Sign up by filling the details asked. <br></br>
 
                     This will include your first name, last name, token no., password and date of birth "</li>
@@ -58,7 +59,6 @@
                <!-- <IMG SRC="images/CHAT.JPG" ALT="chat logo" style="width:12px;height:17px;">-->
                 <div class="list-group">
                     <ul>
-                        <li> <i class="lab la-whatsapp"></i> WhatsApp: 0000 000 000 <br></li>
                         <li><i class="lar la-envelope"></i> Email: <a href="#"> aaaa@gmail.com </a></li>
                     </ul>
                 </div>
