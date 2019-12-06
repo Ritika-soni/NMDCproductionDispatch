@@ -23,8 +23,8 @@ and open the template in the editor.
           %>
     </head>
     <body>
-        <h2 class="heading">DAILY PRODUCTION DETAILS </h2> 
-        <div id="bounce"> <h2 id="dep" class="heading"></h2> </div>
+        <h2 class="heading">DAILY PRODUCTION DETAILS</h2> 
+       <div id="bounce"> <h2 class="heading">DEPOSIT - 11B</h2> </div>
         <div class="container">
             <div class='date float-right font-weight-bold text-info bg-warning'> <i class="las la-calendar"></i> <%= currentDate %> </div>
         </div>  
@@ -32,7 +32,7 @@ and open the template in the editor.
           <div class>
               
            <div class="label label-default"><h3>Production</h3></div> 
-        <table class="table" id='tblProduction'>
+        <table class="table" id='tblWaste'>
         <thead class="thead-dark">
             <tr>
                 <th>PRODUCTION</th>
@@ -45,33 +45,17 @@ and open the template in the editor.
         </thead>
         <tbody>
             <tr>
-                <td>FIRST HR. </td>
-                <td><input type="number" id="first_I" name="1st Hr-I" placeholder='1st hr -  I' shift='I' value="" pattern="^\d*$"  title="1st hr -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="first_II"  name="1st Hr-II" placeholder='1st hr -  II' shift='II' value="" pattern="^\d*$"  title="1st hr -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="first_III"  name="1st Hr-III" placeholder='1st hr -  III' shift='III' value="" pattern="^\d*$"  title="1st hr -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="first_onDate" name="1st Hr-ON DATE" placeholder='1st hr - ON-DATE'  title="1st hr - ON-DATE"  disabled ></td>
-                <td><input type="number"  id="first_cumm" name="1st Hr-CUM"  placeholder='1st hr -  CUM'  title="1st hr -  CUM" disabled  ></td>
-            </tr>
-            <tr>
-                <td>LAST HR. </td>
-                <td><input type="number" id="last_I" name="Last Hr-I" placeholder='Last hr -  I' shift='I' value="" pattern="^\d*$"  title="Last hr -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="last_II"  name="Last Hr-II" placeholder='Last hr -  II' shift='II' value="" pattern="^\d*$"  title="Last hr -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="last_III"  name="Last Hr-III" placeholder='Last hr -  III' shift='III'value="" pattern="^\d*$"  title="Last hr -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="last_onDate" name="Last Hr-ON-DATE" placeholder='Last hr -  ON-DATE'   title="Last hr -  ON-DATE"  disabled ></td>
-                <td><input type="number"  id="last_cumm"  name="Last Hr-CUM" placeholder='Last hr -  CUM'   title="Last hr -  CUM"  disabled ></td>
-            </tr>
-                 <tr>
-                <td>ROM</td>
-                <td><input type="number" id="ROM_I" name="ROM Hr-I" placeholder='ROM -  I' shift='I' value="" pattern="^\d*$"  title="ROM -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="ROM_II" name="ROM Hr-II" placeholder='ROM -  II' shift='II' value="" pattern="^\d*$"  title="ROM -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="ROM_III" name="ROM Hr-III" placeholder='ROM -  III' shift='III' value="" pattern="^\d*$"  title="ROM  -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="ROM_onDate" name="ROM Hr-ON-DATE" placeholder='ROM -  ON-DATE'  title="ROM -  ON-DATE" disabled ></td>
-                <td><input type="number"  id="ROM_cumm" name="ROM Hr-CUM" placeholder='ROM -  CUM'  title="ROM -  CUM" disabled  ></td>
+                <td>Waste</td>
+                <td><input type="number" id="Waste_I" name="Waste-I" placeholder='Waste - I' shift='I' value="" pattern="^\d*$"  title="Waste - I" required onblur="calculateOnDateWaste(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="Waste_II"  name="Waste-II" placeholder='Waste-  II' shift='II' value="" pattern="^\d*$"  title="Waste - II" required onblur="calculateOnDateWaste(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="Waste_III" name="Waste-II" placeholder='Waste -  III' shift='III' value="" pattern="^\d*$"  title="Waste -  III" required onblur="calculateOnDateWaste(this);calTotalUtil(this)"></td>
+                <td> <input type="number" id="Waste_onDate" name="Waste-onDate" placeholder='Waste - On-Date'  default value="0"  title="Waste - ON-DATE" disabled  > </td>
+                <td> <input type="number" id="Waste_cumm" name="Waste-cum" placeholder='Waste - CUM' default value="0"  title="Waste - CUM" disabled  > </td>
             </tr>
         </tbody>     
     </table>
           </div>
-             
+         
 <!-- BREAKDOWN BLOCK START-->        
 <div>   
 <div class="label label-default"><h3>Breakdown</h3></div>      
@@ -123,25 +107,19 @@ and open the template in the editor.
 <!-- BREAKDOWN BLOCK ENDS-->
 
 <!-- OPERATIONAL DELAY BLOCK START-->      
-<div>
+ <div>
 <div class="label label-default"><h3>Operational Delay</h3></div>
 <select id="Operational_Delay" multiple>            
-     <option>General Checking</option>
-    <option>Tea Time</option>
-    <option>Sequence Stop</option>
+    <option>General Checking & Seq. Stop</option>
     <option>No Ore</option>
-    <option>Boulder /Pri.Crusher Jam</option>
-    <option>Blasting in Hopper</option>
-    <option>CGEB Power Failure</option>
-    <option>Local Power Failure</option> 
-    <option>MD/Foreign Matl.</option>
-    <option>PSP Full</option>
-    <option>No Water</option>
     <option>Chute Jam</option>
-    <option>Blasting in Mine</option>
-    <option>Bus Late</option>
+    <option>CGEB Power Failure</option>
+    <option>Local Power Failure</option>
+    <option>MD/Foreign Matl.</option>
+    <option>SSP Full</option>
+    <option>Late Clearance / D-11C Oprn.</option>  
     <option>Idle</option>
-     <option>Others</option>
+    <option>Others</option> 
 </select>   
 <button type='button' class='btn btn-primary' id='btnAddOperational_Delays'><i class="las la-plus-circle"></i> Add Operational Delay</button>      
  <div>
@@ -245,7 +223,8 @@ and open the template in the editor.
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
- <script type="text/javascript">
+
+    <script type="text/javascript">
         const SCHEDULED_HR =8;
         const SHIFTS = {
                 FIRSTSHIFT : "I",
@@ -255,15 +234,15 @@ and open the template in the editor.
             
         this.stateObj = {
             currentShift: SHIFTS.FIRSTSHIFT,
-            currentFeed : 0,
+            currentWaste : 0,
             currentUtlHr : 0,
             currentOperational_Delay : 0,
             currentBreakdown :0,
             onDateStoppageAndOperational_Delay:0
         }
         
-        //update the ondate feed value based on change in shift's feed
-        function calculateOnDateFeed(field) {  
+        //update the ondate Waste value based on change in shift's Waste
+        function calculateOnDateWaste(field) {  
                 let currentRow = $(field).closest("tr");
                 const currentShift = $(field).attr("shift");
                 switch(currentShift){
@@ -472,11 +451,7 @@ and open the template in the editor.
             $("div .progress-bar").width(util)
         }
                    
-        $(function() {           
-            
-            
-            const dep = "Deposit - "+window.location.search.split("=")[1];                        
-            $("#dep").text(dep);    
+        $(function() {            
         
             $('#Breakdown').multiselect({
                 includeSelectAllOption: true,
@@ -495,7 +470,7 @@ and open the template in the editor.
                  
             
           });
-        </script>
+        </script>  
 
 
 </body>

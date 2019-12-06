@@ -24,7 +24,7 @@ and open the template in the editor.
     </head>
     <body>
         <h2 class="heading">DAILY PRODUCTION DETAILS </h2> 
-        <div id="bounce"> <h2 id="dep" class="heading"></h2> </div>
+        <div id="bounce"><h2 class="heading"> <center> TERTIARY CRUSHING PLANT (TCP)<center> </h2></div>
         <div class="container">
             <div class='date float-right font-weight-bold text-info bg-warning'> <i class="las la-calendar"></i> <%= currentDate %> </div>
         </div>  
@@ -44,54 +44,110 @@ and open the template in the editor.
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>FIRST HR. </td>
-                <td><input type="number" id="first_I" name="1st Hr-I" placeholder='1st hr -  I' shift='I' value="" pattern="^\d*$"  title="1st hr -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="first_II"  name="1st Hr-II" placeholder='1st hr -  II' shift='II' value="" pattern="^\d*$"  title="1st hr -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="first_III"  name="1st Hr-III" placeholder='1st hr -  III' shift='III' value="" pattern="^\d*$"  title="1st hr -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="first_onDate" name="1st Hr-ON DATE" placeholder='1st hr - ON-DATE'  title="1st hr - ON-DATE"  disabled ></td>
-                <td><input type="number"  id="first_cumm" name="1st Hr-CUM"  placeholder='1st hr -  CUM'  title="1st hr -  CUM" disabled  ></td>
+             <tr>
+                <td>LUMP</td>
+                <td><input type="number" id="lump_I" name="LUMP-I" placeholder='LUMP -  I' shift='I' value="" pattern="^\d*$"  title="LUMP-  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="lump_II"  name="LUMP-II" placeholder='LUMP -  II' shift='II' value="" pattern="^\d*$"  title="LUMP -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="lump_III"  name="LUMP-III" placeholder='LUMP -  III' shift='III' value="" pattern="^\d*$"  title="LUMP -  III" onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="lump_onDate" name="LUMP-ON DATE" placeholder='LUMP - ON-DATE'  title="LUMP - ON-DATE"  disabled ></td>
+                <td><input type="number" id="lump_cumm" name="LUMP-CUM"  placeholder='LUMP -  CUM'  title="LUMP -  CUM" disabled  ></td>
             </tr>
             <tr>
-                <td>LAST HR. </td>
-                <td><input type="number" id="last_I" name="Last Hr-I" placeholder='Last hr -  I' shift='I' value="" pattern="^\d*$"  title="Last hr -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="last_II"  name="Last Hr-II" placeholder='Last hr -  II' shift='II' value="" pattern="^\d*$"  title="Last hr -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="last_III"  name="Last Hr-III" placeholder='Last hr -  III' shift='III'value="" pattern="^\d*$"  title="Last hr -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="last_onDate" name="Last Hr-ON-DATE" placeholder='Last hr -  ON-DATE'   title="Last hr -  ON-DATE"  disabled ></td>
-                <td><input type="number"  id="last_cumm"  name="Last Hr-CUM" placeholder='Last hr -  CUM'   title="Last hr -  CUM"  disabled ></td>
+                <td>FEED</td>
+                <td><input type="number" id="feed_I"  name="FEED-I" placeholder='FEED -  I' shift='I' value="" pattern="^\d*$"  title="FEED -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="feed_II" name="FEED-II" placeholder='FEED -  II' shift='II' value="" pattern="^\d*$"  title="FEED -  II" onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="feed_III" name="FEED-III" placeholder='FEED -  III' shift='III' value="" pattern="^\d*$"  title="FEED -  III" onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="feed_onDate" name="FEED-ON-DATE" placeholder='FEED-  ON-DATE'  title="FEED -  ON-DATE"  disabled ></td>
+                <td><input type="number" id="feed_cumm" name="FEED-CUM" placeholder='FEED -  CUM'  title="FEED -  CUM" disabled  ></td>
             </tr>
                  <tr>
-                <td>ROM</td>
-                <td><input type="number" id="ROM_I" name="ROM Hr-I" placeholder='ROM -  I' shift='I' value="" pattern="^\d*$"  title="ROM -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="ROM_II" name="ROM Hr-II" placeholder='ROM -  II' shift='II' value="" pattern="^\d*$"  title="ROM -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="ROM_III" name="ROM Hr-III" placeholder='ROM -  III' shift='III' value="" pattern="^\d*$"  title="ROM  -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
-                <td><input type="number" id="ROM_onDate" name="ROM Hr-ON-DATE" placeholder='ROM -  ON-DATE'  title="ROM -  ON-DATE" disabled ></td>
-                <td><input type="number"  id="ROM_cumm" name="ROM Hr-CUM" placeholder='ROM -  CUM'  title="ROM -  CUM" disabled  ></td>
+                <td>FINE</td>
+                <td><input type="number" id="fine_I" name="FINE-I" placeholder='FINE -  I' shift='I' value="" pattern="^\d*$"  title="FINE -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="fine_II" name="FINE-II" placeholder='FINE -  II' shift='II' value="" pattern="^\d*$"  title="FINE -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="fine_III" name="FINE-III" placeholder='FINE -  III' shift='III' value="" pattern="^\d*$"  title="FINE  -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="fine_onDate" name="FINE-ON-DATE" placeholder='FINE -  ON-DATE'   title="FINE -  ON-DATE" disabled ></td>
+                <td><input type="number" id="fine_cumm" name="FINE-CUM" placeholder='FINE -  CUM'   title="FINE -  CUM" disabled  ></td>
+            </tr>
+            <tr>
+                <td>NPO(707)</td>
+                <td><input type="number" id="npo_I" name="NPO(707)-I" placeholder='NPO(707) -  I' shift='I' value="" pattern="^\d*$"  title="NPO(707) -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number"  id="npo_II" name="NPO(707)-II" placeholder='NPO(707) -  II' shift='II' value="" pattern="^\d*$"  title="NPO(707) -  II" onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number"  id="npo_III"   name="NPO(707)-III" placeholder='NPO(707) -  III' shift='III' value="" pattern="^\d*$"  title="NPO(707)  -  III" onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number"  id="npo_onDate"   name="NPO(707)-ON-DATE" placeholder='NPO(707) -  ON-DATE'  title="NPO(707) -  ON-DATE" disabled ></td>
+                <td><input type="number"  id="npo_cumm"   name="NPO(707)-CUM" placeholder='NPO(707) -  CUM'   title="NPO(707) -  CUM" disabled  ></td>
+            </tr>
+            <tr>
+                <td>B.L Sized Ore</td>
+                <td><input type="number" id="bl_sized_ore_I" name="B.L Sized Ore-I" placeholder='B.L Sized Ore -  I' shift='I' value="" pattern="^\d*$"  title="B.L Sized Ore -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="bl_sized_ore_II" name="B.L Sized Ore-II" placeholder='B.L Sized Ore -  II' shift='II' value="" pattern="^\d*$"  title="B.L Sized Ore -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="bl_sized_ore_III" name="B.L Sized Ore-III" placeholder='B.L Sized Ore -  III' shift='III' value="" pattern="^\d*$"  title="B.L Sized Ore -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="bl_sized_ore_onDate" name="B.L Sized Ore-ON-DATE" placeholder='B.L Sized Ore -  ON-DATE'  title="B.L Sized Ore -  ON-DATE"  disabled ></td>
+                <td><input type="number" id="bl_sized_ore_cumm" name="B.L Sized Ore-CUM" placeholder='B.L Sized Ore -  CUM'   title="B.L Sized Ore -  CUM"  disabled ></td>
+            </tr>
+            <tr>
+                <td>315 SIDING</td>
+                <td><input type="number" id="siding_I" name="315 SIDING-I" placeholder='315 SIDING -  I' shift='I' value="" pattern="^\d*$"  title="315 SIDING -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="siding_II" name="315 SIDING-II" placeholder='315 SIDING -  II' shift='II' value="" pattern="^\d*$"  title="315 SIDING -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="siding_III" name="315 SIDING-III" placeholder='315 SIDING -  III' shift='III' value="" pattern="^\d*$"  title="315 SIDING -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="siding_onDate" name="315 SIDING-ON-DATE" placeholder='315 SIDING -  ON-DATE'   title="315 SIDING -  ON-DATE"  disabled ></td>
+                <td><input type="number" id="siding_cumm" name="315 SIDING-CUM" placeholder='315 SIDING -  CUM'   title="315 SIDING -  CUM"  disabled ></td>
+            </tr>
+            <tr>
+                <td>FOH</td>
+                <td><input type="number" id="foh_I" name="FOH-I" placeholder='FOH -  I' shift='I' value="" pattern="^\d*$"  title="FOH -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="foh_II" name="FOH-II" placeholder='FOH -  II' shift='II' value="" pattern="^\d*$"  title="FOH -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="foh_III" name="FOH-III" placeholder='FOH -  III' shift='III' value="" pattern="^\d*$"  title="FOH -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="foh_onDate" name="FOH-ON-DATE" placeholder='FOH -  ON-DATE'   title="FOH-  ON-DATE"  disabled ></td>
+                <td><input type="number" id=foh_cumm" name="FOH-CUM" placeholder='FOH -  CUM'  title="FOH -  CUM"  disabled ></td>
+            </tr>
+             <tr>
+                <td>316A</td>
+                <td><input type="number" id="316A_I" name="316A-I" placeholder='316A -  I' shift='I' value="" pattern="^\d*$"  title="316A -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="316A_II" name="316A-II" placeholder='316A -  II' shift='II' value="" pattern="^\d*$"  title="316A -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="316A_III" name="316A-III" placeholder='316A -  III' shift='III' value="" pattern="^\d*$"  title="316A -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="316A_onDate" name="316A-ON-DATE" placeholder='316A -  ON-DATE'   title="316A -  ON-DATE"  disabled ></td>
+                <td><input type="number" id="316A_cumm" name="316A-CUM" placeholder='316A -  CUM'   title="316A -  CUM"  disabled ></td>
+            </tr>
+             <tr>
+                <td>315 N2</td>
+                <td><input type="number" id="315N2_I" name="315 N2-I" placeholder='315 N2 -  I' shift='I' value="" pattern="^\d*$"  title="315 N2 -  I" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="315N2_II" name="315 N2-II" placeholder='315 N2 -  II' shift='II' value="" pattern="^\d*$"  title="315 N2 -  II" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="315N2_III" name="315 N2-III" placeholder='315 N2 -  III' shift='III' value="" pattern="^\d*$"  title="315 N2 -  III" required onblur="calculateOnDateProduction(this);calTotalUtil(this)"></td>
+                <td><input type="number" id="315N2_onDate" name="315 N2-ON-DATE" placeholder='315 N2 -  ON-DATE'   title="315 N2-  ON-DATE"  disabled ></td>
+                <td><input type="number" id="315N2_cumm" name="315 N2-CUM" placeholder='315 N2 -  CUM'  title="315 N2 -  CUM"  disabled required></td>
             </tr>
         </tbody>     
     </table>
           </div>
-             
+         
 <!-- BREAKDOWN BLOCK START-->        
 <div>   
 <div class="label label-default"><h3>Breakdown</h3></div>      
-<select id="Breakdown" multiple>            
-        <option disabled>Mechanical</option>
-         <option>201 Feeder</option>
-         <option> 201 B Feeder</option>
-         <option>202 Belt Conveyor</option>
-         <option>203 Belt Conveyor</option>
-         <option>204 Belt Conveyor</option>
-        <option> 205 Belt Conveyor</option>
-         <option disabled>Electrical</option>
-         <option>201 Feeder</option>
-         <option>201 B Feeder</option>
-         <option>202 Belt Conveyor</option>
-         <option>203 Belt Conveyor</option>
-         <option>204 Belt Conveyor</option>
-         <option>205 Belt Conveyor</option>
-         <option>Maintenance</option>
-         <option>Others</option>               
+<select id="Breakdown" multiple> 
+    <option>900 Flap Gate</option>
+    <option>901 Belt Conveyor</option>
+    <option>Weightometers</option>
+    <option>903 Metal Detector</option>
+    <option>904 Belt Conveyor</option>
+    <option>905 Shuttle Conveyor</option>
+    <option>906 R & P Gate (A,B)</option>
+    <option>907 Vib. Feeder (A,B)</option>
+    <option>908 Ter. Cone Crusher (A,B)</option>
+    <option>910 Belt Conveyor</option>
+    <option>911 Ter. Vib. Screen (A,B)</option>
+    <option>912 Belt Conveyor</option>
+    <option>914 Belt Conveyor</option>
+    <option>916 Belt Conveyor</option>
+    <option>918 Belt Conveyor</option>
+    <option>920 Belt Conveyor</option>
+    <option>921 Vib. Screen</option>
+    <option>922 Belt Conveyor</option>
+    <option>923 Belt Conveyor</option>
+    <option>925 Belt Conveyor</option>
+    <option>926 Vib. Screen</option>
+    <option>927 Belt Conveyor</option>
+    <option>Electrical - TCP</option>
+    <option>Others</option>
 </select>   
 <button type='button' class='btn btn-primary' id='btnAddBreakdown'><i class="las la-plus-circle"></i> Add Breakdown</button>      
  <div>
@@ -125,23 +181,23 @@ and open the template in the editor.
 <!-- OPERATIONAL DELAY BLOCK START-->      
 <div>
 <div class="label label-default"><h3>Operational Delay</h3></div>
-<select id="Operational_Delay" multiple>            
-     <option>General Checking</option>
-    <option>Tea Time</option>
-    <option>Sequence Stop</option>
-    <option>No Ore</option>
-    <option>Boulder /Pri.Crusher Jam</option>
-    <option>Blasting in Hopper</option>
-    <option>CGEB Power Failure</option>
-    <option>Local Power Failure</option> 
-    <option>MD/Foreign Matl.</option>
-    <option>PSP Full</option>
-    <option>No Water</option>
-    <option>Chute Jam</option>
-    <option>Blasting in Mine</option>
-    <option>Bus Late</option>
-    <option>Idle</option>
-     <option>Others</option>
+<select id="Operational_Delay" multiple> 
+    <option>General Checking & Seq. Stoppage</option>	
+    <option>No Ore</option>	
+    <option>Chute Jam / Jam</option>	
+    <option>Feeder Jam</option>	
+    <option>L.O.Stockpile full 310</option>	
+    <option>No Space in F.O.Dump</option>	
+    <option>900 Flap Gate Change</option>	
+    <option>310 Belt Conveyor</option>	
+    <option>314 / 315 Belt Conveyor</option>	
+    <option>614 Belt Conveyor</option>	
+    <option>Metal Detector</option>	
+    <option>D.L.O. Operation</option>	
+    <option>Bunker Full</option>	
+    <option>TCP Items</option>	
+    <option>Electrical</option> 	
+    <option>Others</option>	
 </select>   
 <button type='button' class='btn btn-primary' id='btnAddOperational_Delays'><i class="las la-plus-circle"></i> Add Operational Delay</button>      
  <div>
@@ -245,7 +301,8 @@ and open the template in the editor.
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
- <script type="text/javascript">
+
+     <script type="text/javascript">
         const SCHEDULED_HR =8;
         const SHIFTS = {
                 FIRSTSHIFT : "I",

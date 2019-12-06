@@ -104,25 +104,38 @@ and open the template in the editor.
     </table>
           </div>
          
-<!-- STOPPAGES BLOCK START-->        
+<!-- BREAKDOWN BLOCK START-->        
 <div>   
-<div class="label label-default"><h3> Stoppages</h3></div>      
-<select id="stoppages" multiple>            
-    <option>NO ORE</option>
-    <option>PSP FULL</option>
-    <option>BOULDER JAM</option>
-    <option>CHUTE JAM</option>
-    <option>NO POWER</option>
-    <option>MECH. B/D</option>
-    <option>ELEC. B/D</option>
-    <option>OTHERS</option>           
+<div class="label label-default"><h3>Breakdown</h3></div>      
+<select id="Breakdown" multiple>  
+    <option>304 Vibrating Screen</option>
+    <option>305 Vibrating Screen</option>
+    <option>306 Belt Conveyor</option>
+    <option>307 Belt Conveyor</option>
+    <option>308 Belt Conveyor</option>
+    <option>308 A Belt Conveyor</option>
+    <option>308 B Belt Conveyor</option>
+    <option>308 C Belt Conveyor</option>
+    <option>309 Belt Conveyor</option>
+    <option>310 Belt Conveyor</option>
+    <option>312 Boom Stacker</option>
+    <option>314 Belt Conveyor</option>
+    <option>315 Belt Conveyor</option>
+    <option>316 Belt Conveyor</option>
+    <option>317 Belt Conveyor</option>
+    <option>318 Belt Conveyor</option>
+    <option>Electrical - S.Plant</option>  
+    <option>Electrical - B/Stacker</option>
+    <option>Electrical - Fine Ore</option>
+    <option>Maintenance</option>
+    <option>Others</option>               
 </select>   
-<button type='button' class='btn btn-primary' id='btnAddStoppages'><i class="las la-plus-circle"></i> Add Stoppages</button>      
+<button type='button' class='btn btn-primary' id='btnAddBreakdown'><i class="las la-plus-circle"></i> Add Breakdown</button>      
  <div>
-     <table class="table hide" id='tblStoppages'>
+     <table class="table hide" id='tblBreakdown'>
         <thead class="thead-dark">
             <tr>
-                <th>STOPPAGES</th>
+                <th>Breakdown</th>
                 <th>SHIFT I</th>
                 <th>SHIFT II</th>
                 <th>SHIFT III</th>
@@ -134,37 +147,47 @@ and open the template in the editor.
         <tbody>            
             <tr class='hide'>
                 <td>No Stoppage</td> 
-                <td><input type="number" step=".01" max="8" name="Stop-I" placeholder='Stoppage -  I' shift='I'  title="Stoppage -  I"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this); " ></td>
-                <td><input type="number" step=".01" max="8"  name="Stop-II" placeholder='Stoppage -  II'  shift='II' title="Stoppage -  II"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)"  ></td>
-                <td><input type="number" step=".01" max="8"  name="Stop-III" placeholder='Stoppage -  III' shift='III' title="Stoppage -  III"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)" ></td>
+                <td><input type="number" step=".01" max="8" name="Stop-I" placeholder='Stoppage -  I' shift='I'  title="Stoppage -  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
+                <td><input type="number" step=".01" max="8"  name="Stop-II" placeholder='Stoppage -  II'  shift='II' title="Stoppage -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
+                <td><input type="number" step=".01" max="8"  name="Stop-III" placeholder='Stoppage -  III' shift='III' title="Stoppage -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Stop-onDate" placeholder='Stoppage - ON-DATE' default value="0" title="Stoppage - ON-DATE" disabled ></td>
                 <td><input type="number" step=".01" name="Stop-cum" placeholder='Stoppage - CUM' default value="0" title="Stoppage - CUM" disabled > </td>
-                <td><button type='button' class='btn btn-danger btn-sm' name='btnRemoveStoppages' onclick="removeStoppage(this)"><i class="las la-trash"></i> Remove</button></td>
+                <td><button type='button' class='btn btn-danger btn-sm' name='btnRemoveBreakdown' onclick="removeStoppage(this)"><i class="las la-trash"></i> Remove</button></td>
             </tr>
       </tbody>
      </table>
  
-<!-- STOPPAGES BLOCK ENDS-->
+<!-- BREAKDOWN BLOCK ENDS-->
 
-<!-- BREAKDOWN BLOCK START-->      
- <div>
-<div class="label label-default"><h3> Breakdowns</h3></div>
-<select id="breakdown" multiple>            
-    <option>NO ORE</option>
-    <option>PSP FULL</option>
-    <option>BOULDER JAM</option>
-    <option>CHUTE JAM</option>
-    <option>NO POWER</option>
-    <option>MECH. B/D</option>
-    <option>ELEC. B/D</option>
-    <option>OTHERS</option>           
+<!-- OPERATIONAL DELAY BLOCK START-->      
+<div>
+<div class="label label-default"><h3>Operational Delay</h3></div>
+<select id="Operational_Delay" multiple>            
+    <option>General Checking & Seq. Stoppage</option>
+    <option>No Ore</option>
+    <option>Chute Jam / Jam</option>
+    <option>Feeder Jam</option>
+    <option>L.O.Stockpile full</option>
+    <option>CGEB Power Failure</option>
+    <option>No Water</option>
+    <option>No Space in F.O.Dump</option> 
+    <option>Shutter Change</option>
+    <option>M.D./Foreign Material</option>
+    <option>TCP / B.F / M.D.</option>
+    <option>Electrical</option>
+    <option>314 / 315 BC Stoppage</option>
+    <option>310 BC Stoppage</option>
+    <option>614 BC Stoppage</option>
+    <option>Sampling</option> 
+    <option>Idle</option>
+    <option>Others</option> 
 </select>   
-<button type='button' class='btn btn-primary' id='btnAddBreakdowns'><i class="las la-plus-circle"></i> Add Breakdown</button>      
+<button type='button' class='btn btn-primary' id='btnAddOperational_Delays'><i class="las la-plus-circle"></i> Add Operational Delay</button>      
  <div>
-     <table class="table hide" id='tblBreakdown'>
+     <table class="table hide" id='tblOperational_Delay'>
         <thead class="thead-dark">
             <tr>
-                <th>BREAKDOWNS</th>
+                <th>OPERATIONAL DELAY</th>
                 <th>SHIFT I</th>
                 <th>SHIFT II</th>
                 <th>SHIFT III</th>
@@ -175,19 +198,19 @@ and open the template in the editor.
         </thead>
         <tbody>            
             <tr class='hide'>
-                <td>No Breakdown</td> 
-                <td><input type="number" step=".01" max="8" name="Breakdown-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown-  I"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this); " ></td>
-                <td><input type="number" step=".01" max="8"  name="Breakdown-II" placeholder='Breakdown -  II'  shift='II' title="Breakdown -  II"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)"  ></td>
-                <td><input type="number" step=".01" max="8"  name="Breakdown-III" placeholder='Breakdown -  III' shift='III' title="Breakdown -  III"  onblur="calculateOnDateStoppageBreakdown(this); return calTotalUtil(this)" ></td>
-                <td><input type="number" step=".01"  name="Breakdown-onDate" placeholder='Breakdown - ON-DATE' default value="0" title="Breakdown - ON-DATE" disabled ></td>
-                <td><input type="number" step=".01" name="Breakdown-cum" placeholder='Breakdown - CUM' default value="0" title="Breakdown - CUM" disabled > </td>
-                <td><button type='button' class='btn btn-danger btn-sm' name='btnBreakdowns' onclick="removeBreakdown(this)"><i class="las la-trash"></i> Remove</button></td>
+                <td>No Operational_Delay</td> 
+                <td><input type="number" step=".01" max="8" name="Operational_Delay-I" placeholder='Operational_Delay -  I' shift='I'  title="Operational_Delay-  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
+                <td><input type="number" step=".01" max="8"  name="Operational_Delay-II" placeholder='Operational_Delay -  II'  shift='II' title="Operational_Delay -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
+                <td><input type="number" step=".01" max="8"  name="Operational_Delay-III" placeholder='Operational_Delay -  III' shift='III' title="Operational_Delay -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
+                <td><input type="number" step=".01"  name="Operational_Delay-onDate" placeholder='Operational_Delay - ON-DATE' default value="0" title="Operational_Delay - ON-DATE" disabled ></td>
+                <td><input type="number" step=".01" name="Operational_Delay-cum" placeholder='Operational_Delay - CUM' default value="0" title="Operational_Delay - CUM" disabled > </td>
+                <td><button type='button' class='btn btn-danger btn-sm' name='Operational_Delay' onclick="removeOperational_Delay(this)"><i class="las la-trash"></i> Remove</button></td>
             </tr>
       </tbody>
      </table>
  </div>
 </div>      
-<!-- BREAKDOWN BLOCK ENDS-->
+<!-- OPERATIONAL DELAY BLOCK ENDS-->
 
 <!-- UTILIZATION BLOCK START-->   
 <div>
@@ -262,7 +285,7 @@ and open the template in the editor.
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 
-    <script type="text/javascript">
+     <script type="text/javascript">
         const SCHEDULED_HR =8;
         const SHIFTS = {
                 FIRSTSHIFT : "I",
@@ -272,15 +295,15 @@ and open the template in the editor.
             
         this.stateObj = {
             currentShift: SHIFTS.FIRSTSHIFT,
-            currentProduction : 0,
+            currentFeed : 0,
             currentUtlHr : 0,
-            currentBreakdowns : 0,
-            currentStoppages :0,
-            onDateStoppageAndBreakdown:0
+            currentOperational_Delay : 0,
+            currentBreakdown :0,
+            onDateStoppageAndOperational_Delay:0
         }
         
         //update the ondate feed value based on change in shift's feed
-        function calculateOnDateProduction(field) {  
+        function calculateOnDateFeed(field) {  
                 let currentRow = $(field).closest("tr");
                 const currentShift = $(field).attr("shift");
                 switch(currentShift){
@@ -308,8 +331,8 @@ and open the template in the editor.
             $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
          } 
          
-          //update the ondate breakdown value based on change in shift's stoppage
-        function calculateOnDateBreakdown(field) {   
+          //update the ondate Operational_Delay value based on change in shift's stoppage
+        function calculateOnDateOperational_Delay(field) {   
             let currentRow = $(field).closest("tr");
             let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
             let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
@@ -318,8 +341,8 @@ and open the template in the editor.
             $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
          }  
        */  
-            //update the ondate stoppage and breakdown value based on change in shift's stoppage/breakdown
-        function calculateOnDateStoppageBreakdown(field) {   
+            //update the ondate stoppage and Operational_Delay value based on change in shift's stoppage/Operational_Delay
+        function calculateOnDateOperationalDelay(field) {   
             let currentRow = $(field).closest("tr");
             let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
             let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
@@ -328,18 +351,18 @@ and open the template in the editor.
             $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
          }  
                   
-            //calculates total of the stoppages for the shift
-           function calTotalStoppageAndBreakdown(curObj) { 
+            //calculates total of the Breakdown for the shift
+           function calTotalStoppageAndOperational_Delay(curObj) { 
                 let total=0; 
                 //const currentShift = $(curObj).attr("shift");
                 const currentShift =  this.stateObj.currentShift;
-                let stoppageAndBreakdownFields = $('#tblBreakdown tr,#tblStoppages tr').not('.hide').find('input[shift="'+currentShift+'"]'); 
-                stoppageAndBreakdownFields.each((index,reason) => {
+                let stoppageAndOperational_DelayFields = $('#tblOperational_Delay tr,#tblBreakdown tr').not('.hide').find('input[shift="'+currentShift+'"]'); 
+                stoppageAndOperational_DelayFields.each((index,reason) => {
                        total += parseFloat(reason.value)||0;
                  });
                  
                 if(total > SCHEDULED_HR ){
-                 alert("Verify that the total stoppages + breakdown should not be more than"+ SCHEDULED_HR+ " hrs");  
+                 alert("Verify that the total Breakdown + Operational_Delay should not be more than"+ SCHEDULED_HR+ " hrs");  
                  $(curObj).val('');
                  return false;
                 }
@@ -348,7 +371,7 @@ and open the template in the editor.
                     
             //updates the utilisation hour for the shfit
             function calTotalUtil(curObj) {
-                let utilHr = (SCHEDULED_HR - calTotalStoppageAndBreakdown(curObj)).toFixed(2);
+                let utilHr = (SCHEDULED_HR - calTotalStoppageAndOperational_Delay(curObj)).toFixed(2);
                 let currentShift = $(curObj).attr("shift");        
                 let currentShiftUtilId = "UTL_"+currentShift;
                 document.getElementById(currentShiftUtilId).value = utilHr;
@@ -377,27 +400,10 @@ and open the template in the editor.
         }
 
 
-        $("#btnAddStoppages").on("click", function () {
-            let selected = $("#stoppages").val();  
+        $("#btnAddBreakdown").on("click", function () {
+            let selected = $("#Breakdown").val();  
             if(!selected ) {
                 alert("select atleast one stoppage reason to be added");
-                return;
-            }
-            for(let i=0;i<selected.length;i++){ 
-                if(!checkExist(selected[i],"tblStoppages")) {       
-                    let row = $("#tblStoppages tbody tr:first").clone(false);
-                    $(row).removeClass('hide');
-                    $("#tblStoppages").removeClass('hide');
-                    $(row).find('td')[0].innerText = selected[i];
-                    $("#tblStoppages tbody").append(row);
-                   }     
-                }
-            });       
-            
-         $("#btnAddBreakdowns").on("click", function () {
-            let selected = $("#breakdown").val();  
-            if(!selected ) {
-                alert("select atleast one breakdown reason to be added");
                 return;
             }
             for(let i=0;i<selected.length;i++){ 
@@ -409,30 +415,30 @@ and open the template in the editor.
                     $("#tblBreakdown tbody").append(row);
                    }     
                 }
+            });       
+            
+         $("#btnAddOperational_Delays").on("click", function () {
+            let selected = $("#Operational_Delay").val();  
+            if(!selected ) {
+                alert("select atleast one Operational_Delay reason to be added");
+                return;
+            }
+            for(let i=0;i<selected.length;i++){ 
+                if(!checkExist(selected[i],"tblOperational_Delay")) {       
+                    let row = $("#tblOperational_Delay tbody tr:first").clone(false);
+                    $(row).removeClass('hide');
+                    $("#tblOperational_Delay").removeClass('hide');
+                    $(row).find('td')[0].innerText = selected[i];
+                    $("#tblOperational_Delay tbody").append(row);
+                   }     
+                }
             });    
         
         function removeStoppage(btn) { 
             let row = $(btn).closest("tr")
             let stoppageType = $(row).find("td:first").html();
             $(btn).closest("tr",row).remove();
-            $('#stoppages').multiselect('deselect', [stoppageType]); 
-            const countRows = $('#tblStoppages').find("tr").length;
-            if(countRows <3) { //one header row , second hidden row
-                $("#tblStoppages").addClass('hide');                
-            }
-            let firstShiftObj = $(row).find("td:nth-child(2) > input",row) ;
-            let secondShiftObj = $(row).find("td:nth-child(3)> input",row) ;
-            let thirdShiftObj = $(row).find("td:nth-child(4)> input",row) ;
-            calTotalUtil(firstShiftObj);
-            calTotalUtil(secondShiftObj);
-            calTotalUtil(thirdShiftObj);
-        }    
-        
-         function removeBreakdown(btn) {
-            let row = $(btn).closest("tr")
-            let breakdownType = $(row).find("td:first").html();
-            $(btn).closest("tr",row).remove();
-            $('#breakdown').multiselect('deselect', [breakdownType]); 
+            $('#Breakdown').multiselect('deselect', [stoppageType]); 
             const countRows = $('#tblBreakdown').find("tr").length;
             if(countRows <3) { //one header row , second hidden row
                 $("#tblBreakdown").addClass('hide');                
@@ -444,9 +450,26 @@ and open the template in the editor.
             calTotalUtil(secondShiftObj);
             calTotalUtil(thirdShiftObj);
         }    
+        
+         function removeOperational_Delay(btn) {
+            let row = $(btn).closest("tr")
+            let Operational_DelayType = $(row).find("td:first").html();
+            $(btn).closest("tr",row).remove();
+            $('#Operational_Delay').multiselect('deselect', [Operational_DelayType]); 
+            const countRows = $('#tblOperational_Delay').find("tr").length;
+            if(countRows <3) { //one header row , second hidden row
+                $("#tblOperational_Delay").addClass('hide');                
+            }
+            let firstShiftObj = $(row).find("td:nth-child(2) > input",row) ;
+            let secondShiftObj = $(row).find("td:nth-child(3)> input",row) ;
+            let thirdShiftObj = $(row).find("td:nth-child(4)> input",row) ;
+            calTotalUtil(firstShiftObj);
+            calTotalUtil(secondShiftObj);
+            calTotalUtil(thirdShiftObj);
+        }    
               
     
-      //calculates total of the stoppages for the shift
+      //calculates total of the Breakdown for the shift
         /*    function calTotalStoppage(curObj) {            
                 let total=0;
                 let currentName = $(curObj).prop("name");
@@ -457,7 +480,7 @@ and open the template in the editor.
                  });
                  
                 if(total > SCHEDULED_HR ){
-                 alert("Verify that the total stoppages should not be more than" SCHEDULED_HR+" hrs");  
+                 alert("Verify that the total Breakdown should not be more than" SCHEDULED_HR+" hrs");  
                  $(curObj).val('');
                  calculateOnDateStoppage(curObj);
                  return false;
@@ -492,18 +515,19 @@ and open the template in the editor.
         $(function() {           
             
             
-              
+            const dep = "Deposit - "+window.location.search.split("=")[1];                        
+            $("#dep").text(dep);    
         
-            $('#stoppages').multiselect({
+            $('#Breakdown').multiselect({
                 includeSelectAllOption: true,
-                nonSelectedText: 'No Stoppages',
+                nonSelectedText: 'No Breakdown',
                 numberDisplayed: 1,        
                 enableCaseInsensitiveFiltering: true,        
             });
             
-            $('#breakdown').multiselect({
+            $('#Operational_Delay').multiselect({
                 includeSelectAllOption: true,
-                nonSelectedText: 'No Breakdown',
+                nonSelectedText: 'No Operational Delay',
                 numberDisplayed: 1,        
                 enableCaseInsensitiveFiltering: true,        
             });
@@ -511,7 +535,7 @@ and open the template in the editor.
                  
             
           });
-        </script>  
+        </script>
 
 
 </body>

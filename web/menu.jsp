@@ -8,6 +8,7 @@ and open the template in the editor.
     <head>
         <title>DAILY PRODUCTION AND DESPATCH DETAILS</title>
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+          <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
           <link href="css/style.css" rel="stylesheet" type="text/css"/>
           <%
                 session = request.getSession(false);
@@ -56,7 +57,7 @@ and open the template in the editor.
             <br>                
         <div class="container">
             <div class="jumbotron">
-                <center><h1><u><font color="green">DAILY PRODUCTION & DESPATCH DETAILS</font></u></h1></center>
+                <center><h1><u><font color="#1f0080">DAILY PRODUCTION & DISPATCH DETAILS</font></u></h1></center>
 
                 <br>
                 <center>
@@ -64,7 +65,7 @@ and open the template in the editor.
                     <div class="container">
                
                 <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">PRODUCTION DETAILS</button>
+                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">PRODUCTION DETAILS</button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
@@ -72,36 +73,52 @@ and open the template in the editor.
 
                         <!-- Modal content-->
                         <div class="modal-content">
+                            
+                              <div class="modal-header">
+                                
+                                <h4 class="modal-title"><font color="black"><i class="las la-truck-monster">   Deposit</i></font></h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <a href="D-14.jsp" class="btn btn-danger" role="button" style="margin:25px;">D-14</a> 
+                                    <a href="D-11C.jsp" class="btn btn-danger" role="button" style="margin:25px;">D-11C</a> 
+                                    <a href="D-11B.jsp" class="btn btn-danger" role="button" style="margin:25px;">D-11B</a> 
+                                </p>
+                            </div>
+                            
+                             <div class="modal-header">
+                                
+                                <h4 class="modal-title"><font color="black"><i class="las la-mortar-pestle">   Crushing Plant Department</i></font></h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                   <a href="MINE CP-14.jsp" class="btn btn-danger" role="button" style="margin:25px;">CP-14</a>
+                                   <a href="MINE CP-11C.jsp" class="btn btn-danger" role="button" style="margin:25px;">CP-11C</a>
+                                   <a href="MINE CP-11B.jsp" class="btn btn-danger" role="button" style="margin:25px;">CP-11B</a> 
+                                </p>
+                            </div>
+                            
                             <div class="modal-header">
                                 
-                                <h4 class="modal-title">Select Down Hill Department</h4>
+                                <h4 class="modal-title"><font color="black"><i class="las la-warehouse">   Down Hill Department</i></font></h4>
                             </div>
                             <div class="modal-body">
                                 <p>
-                                    <a href="DH.jsp?dep=14" class="btn btn-danger" role="button" style="margin:25px;">DH-14</a> 
-                                    <a href="DH.jsp?dep=11C" class="btn btn-danger" role="button" style="margin:25px;">DH-11C</a> 
-                                    <a href="DH.jsp?dep=11B" class="btn btn-danger" role="button" style="margin:25px;">DH-11B</a> 
+                                    <a href="DH-14.jsp" class="btn btn-danger" role="button" style="margin:25px;">DH-14</a> 
+                                    <a href="DH-11C.jsp" class="btn btn-danger" role="button" style="margin:25px;">DH-11C</a> 
+                                    <a href="DH-11B.jsp" class="btn btn-danger" role="button" style="margin:25px;">DH-11B</a> 
                                 </p>
                             </div>
+                            
                              <div class="modal-header">
                                 
-                                <h4 class="modal-title">Select Crushing Plant Department</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>
-                                   <a href="MINE_CP.jsp?dep=14" class="btn btn-danger" role="button" style="margin:25px;">CP-14</a>
-                                   <a href="MINE_CP.jsp?dep=11C" class="btn btn-danger" role="button" style="margin:25px;">CP-11C</a>
-                                   <a href="MINE_CP.jsp?dep=11B" class="btn btn-danger" role="button" style="margin:25px;">CP-11B</a> 
-                                </p>
-                            </div>
-                             <div class="modal-header">
-                                
-                                <h4 class="modal-title">Select Screening Plant Department</h4>
+                                <h4 class="modal-title"><font color="black"><i class="las la-filter">   Screening Plant Department</i></font></h4>
                             </div>
                             <div class="modal-body">
                                 <p>
                                     <a href="SP_I.jsp" class="btn btn-danger" role="button" style="margin:25px;">SP-I</a>
-                                    <a href="SP_II_TCP.jsp" class="btn btn-danger" role="button" style="margin:25px;">SP-II/TCP</a>
+                                    <a href="SP_II.jsp" class="btn btn-danger" role="button" style="margin:25px;">SP-II</a>
+                                     <a href="TCP.jsp" class="btn btn-danger" role="button" style="margin:25px;">TCP</a>
                                 </p>
                             </div>
                             <div class="modal-footer">
@@ -116,7 +133,7 @@ and open the template in the editor.
                 </center>
                 <br>
                 <center>
-                    <a class='btn btn-success' href="MINE CP-14.html" target="_top">DISPATCH DETAILS</a>
+                    <a class='btn btn-danger btn-lg' href="MINE CP-14.html" target="_top">DISPATCH DETAILS</a>
                 </center>
             </div>
             

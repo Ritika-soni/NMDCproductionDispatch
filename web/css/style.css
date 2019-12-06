@@ -149,15 +149,14 @@ and open the template in the editor.
   }
   
   .heading {
-    color:green;
-    text-decoration:underline;    
+    color: #1f0080;
+    text-decoration: underline;    
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-family: 'Crete Round', serif;
-
 }
 
 .date {

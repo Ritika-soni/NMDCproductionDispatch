@@ -24,7 +24,7 @@ and open the template in the editor.
     </head>
     <body>
         <h2 class="heading">DAILY PRODUCTION DETAILS </h2> 
-        <div id="bounce"> <h2 id="dep" class="heading"></h2> </div>
+        <div id="bounce"> <h2 class="heading">CRUSHING PLANT - 14</h2> </div>
         <div class="container">
             <div class='date float-right font-weight-bold text-info bg-warning'> <i class="las la-calendar"></i> <%= currentDate %> </div>
         </div>  
@@ -75,23 +75,21 @@ and open the template in the editor.
 <!-- BREAKDOWN BLOCK START-->        
 <div>   
 <div class="label label-default"><h3>Breakdown</h3></div>      
-<select id="Breakdown" multiple>            
-        <option disabled>Mechanical</option>
-         <option>201 Feeder</option>
-         <option> 201 B Feeder</option>
-         <option>202 Belt Conveyor</option>
-         <option>203 Belt Conveyor</option>
-         <option>204 Belt Conveyor</option>
-        <option> 205 Belt Conveyor</option>
-         <option disabled>Electrical</option>
-         <option>201 Feeder</option>
-         <option>201 B Feeder</option>
-         <option>202 Belt Conveyor</option>
-         <option>203 Belt Conveyor</option>
-         <option>204 Belt Conveyor</option>
-         <option>205 Belt Conveyor</option>
-         <option>Maintenance</option>
-         <option>Others</option>               
+<select id="Breakdown" multiple> 
+    <option>101 Apron Feeder</option>
+    <option>102 Primary Crusher</option>
+    <option>103 Apron Feeder</option>
+    <option>104 Belt Conveyor</option>
+    <option>107 Scalping Screen</option>
+    <option>108 Secondary Crusher</option>
+    <option>109 Belt Conveyor</option>
+    <option>110 Apron Feeder</option>
+    <option>111 Belt Conveyor</option>
+    <option>112 Grizzly</option>
+    <option>Electrical</option> 
+    <option>Misc.</option>
+    <option>Maintenance</option>
+    <option>Others</option>             
 </select>   
 <button type='button' class='btn btn-primary' id='btnAddBreakdown'><i class="las la-plus-circle"></i> Add Breakdown</button>      
  <div>
@@ -472,11 +470,7 @@ and open the template in the editor.
             $("div .progress-bar").width(util)
         }
                    
-        $(function() {           
-            
-            
-            const dep = "Deposit - "+window.location.search.split("=")[1];                        
-            $("#dep").text(dep);    
+        $(function() {       
         
             $('#Breakdown').multiselect({
                 includeSelectAllOption: true,
