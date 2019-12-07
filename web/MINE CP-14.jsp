@@ -107,13 +107,13 @@ and open the template in the editor.
         </thead>
         <tbody>            
             <tr class='hide'>
-                <td>No Stoppage</td> 
-                <td><input type="number" step=".01" max="8" name="Stop-I" placeholder='Stoppage -  I' shift='I'  title="Stoppage -  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
-                <td><input type="number" step=".01" max="8"  name="Stop-II" placeholder='Stoppage -  II'  shift='II' title="Stoppage -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
-                <td><input type="number" step=".01" max="8"  name="Stop-III" placeholder='Stoppage -  III' shift='III' title="Stoppage -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
-                <td><input type="number" step=".01"  name="Stop-onDate" placeholder='Stoppage - ON-DATE' default value="0" title="Stoppage - ON-DATE" disabled ></td>
-                <td><input type="number" step=".01" name="Stop-cum" placeholder='Stoppage - CUM' default value="0" title="Stoppage - CUM" disabled > </td>
-                <td><button type='button' class='btn btn-danger btn-sm' name='btnRemoveBreakdown' onclick="removeStoppage(this)"><i class="las la-trash"></i> Remove</button></td>
+                <td>No Breakdown</td> 
+                <td><input type="number" step=".01" max="8" name="Break-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown -  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
+                <td><input type="number" step=".01" max="8"  name="Break-II" placeholder='Breakdown -  II'  shift='II' title="Breakdown -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
+                <td><input type="number" step=".01" max="8"  name="Break-III" placeholder='Breakdown -  III' shift='III' title="Breakdown -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
+                <td><input type="number" step=".01"  name="Break-onDate" placeholder='Breakdown - ON-DATE' default value="0" title="Breakdown - ON-DATE" disabled ></td>
+                <td><input type="number" step=".01" name="Break-cum" placeholder='Breakdown - CUM' default value="0" title="Breakdown - CUM" disabled > </td>
+                <td><button type='button' class='btn btn-danger btn-sm' name='btnRemoveBreakdown' onclick="removeBreakdown(this)"><i class="las la-trash"></i> Remove</button></td>
             </tr>
       </tbody>
      </table>
@@ -243,7 +243,7 @@ and open the template in the editor.
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
- <script type="text/javascript">
+  <script type="text/javascript">
         const SCHEDULED_HR =8;
         const SHIFTS = {
                 FIRSTSHIFT : "I",
@@ -257,7 +257,7 @@ and open the template in the editor.
             currentUtlHr : 0,
             currentOperational_Delay : 0,
             currentBreakdown :0,
-            onDateStoppageAndOperational_Delay:0
+            onDateBreakdownAndOperational_Delay:0
         }
         
         //update the ondate feed value based on change in shift's feed
@@ -279,8 +279,8 @@ and open the template in the editor.
                 $("input[id$='_onDate']",currentRow).val(calOnDate);               
          } 
          
-  /*      //update the ondate stoppage value based on change in shift's stoppage
-        function calculateOnDateStoppage(field) {   
+  /*      //update the ondate breakdown value based on change in shift's breakdown
+        function calculateOnDateBreakdown(field) {   
             let currentRow = $(field).closest("tr");
             let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
             let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
@@ -289,7 +289,7 @@ and open the template in the editor.
             $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
          } 
          
-          //update the ondate Operational_Delay value based on change in shift's stoppage
+          //update the ondate Operational_Delay value based on change in shift's breakdown
         function calculateOnDateOperational_Delay(field) {   
             let currentRow = $(field).closest("tr");
             let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
@@ -299,7 +299,7 @@ and open the template in the editor.
             $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
          }  
        */  
-            //update the ondate stoppage and Operational_Delay value based on change in shift's stoppage/Operational_Delay
+            //update the ondate breakdown and Operational_Delay value based on change in shift's breakdown/Operational_Delay
         function calculateOnDateOperationalDelay(field) {   
             let currentRow = $(field).closest("tr");
             let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
@@ -310,12 +310,12 @@ and open the template in the editor.
          }  
                   
             //calculates total of the Breakdown for the shift
-           function calTotalStoppageAndOperational_Delay(curObj) { 
+           function calTotalBreakdownAndOperational_Delay(curObj) { 
                 let total=0; 
                 //const currentShift = $(curObj).attr("shift");
                 const currentShift =  this.stateObj.currentShift;
-                let stoppageAndOperational_DelayFields = $('#tblOperational_Delay tr,#tblBreakdown tr').not('.hide').find('input[shift="'+currentShift+'"]'); 
-                stoppageAndOperational_DelayFields.each((index,reason) => {
+                let breakdownAndOperational_DelayFields = $('#tblOperational_Delay tr,#tblBreakdown tr').not('.hide').find('input[shift="'+currentShift+'"]'); 
+                breakdownAndOperational_DelayFields.each((index,reason) => {
                        total += parseFloat(reason.value)||0;
                  });
                  
@@ -329,7 +329,7 @@ and open the template in the editor.
                     
             //updates the utilisation hour for the shfit
             function calTotalUtil(curObj) {
-                let utilHr = (SCHEDULED_HR - calTotalStoppageAndOperational_Delay(curObj)).toFixed(2);
+                let utilHr = (SCHEDULED_HR - calTotalBreakdownAndOperational_Delay(curObj)).toFixed(2);
                 let currentShift = $(curObj).attr("shift");        
                 let currentShiftUtilId = "UTL_"+currentShift;
                 document.getElementById(currentShiftUtilId).value = utilHr;
@@ -361,7 +361,7 @@ and open the template in the editor.
         $("#btnAddBreakdown").on("click", function () {
             let selected = $("#Breakdown").val();  
             if(!selected ) {
-                alert("select atleast one stoppage reason to be added");
+                alert("select atleast one breakdown reason to be added");
                 return;
             }
             for(let i=0;i<selected.length;i++){ 
@@ -392,11 +392,11 @@ and open the template in the editor.
                 }
             });    
         
-        function removeStoppage(btn) { 
+        function removeBreakdown(btn) { 
             let row = $(btn).closest("tr")
-            let stoppageType = $(row).find("td:first").html();
+            let breakdownType = $(row).find("td:first").html();
             $(btn).closest("tr",row).remove();
-            $('#Breakdown').multiselect('deselect', [stoppageType]); 
+            $('#Breakdown').multiselect('deselect', [breakdownType]); 
             const countRows = $('#tblBreakdown').find("tr").length;
             if(countRows <3) { //one header row , second hidden row
                 $("#tblBreakdown").addClass('hide');                
@@ -428,19 +428,19 @@ and open the template in the editor.
               
     
       //calculates total of the Breakdown for the shift
-        /*    function calTotalStoppage(curObj) {            
+        /*    function calTotalBreakdown(curObj) {            
                 let total=0;
                 let currentName = $(curObj).prop("name");
-                const stoppageFieldSelector = "[name="+ currentName+ "]"
-                let stoppageFields = $(stoppageFieldSelector).not(":first");
-                stoppageFields.each((index,stoppage) => {                
-                  total += parseFloat(stoppage.value)||0;
+                const breakdownFieldSelector = "[name="+ currentName+ "]"
+                let breakdownFields = $(breakdownFieldSelector).not(":first");
+                breakdownFields.each((index,breakdown) => {                
+                  total += parseFloat(breakdown.value)||0;
                  });
                  
                 if(total > SCHEDULED_HR ){
                  alert("Verify that the total Breakdown should not be more than" SCHEDULED_HR+" hrs");  
                  $(curObj).val('');
-                 calculateOnDateStoppage(curObj);
+                 calculateOnDateBreakdown(curObj);
                  return false;
                 }
                 return total.toFixed(2);
@@ -470,7 +470,7 @@ and open the template in the editor.
             $("div .progress-bar").width(util)
         }
                    
-        $(function() {       
+        $(function() {            
         
             $('#Breakdown').multiselect({
                 includeSelectAllOption: true,
@@ -489,8 +489,7 @@ and open the template in the editor.
                  
             
           });
-        </script>
-
+        </script>  
 
 </body>
     
