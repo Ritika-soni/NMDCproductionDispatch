@@ -1,4 +1,4 @@
- <%@page contentType="text/html" import="java.util.Date" %>
+<%@page contentType="text/html" import="java.util.Date" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
 <!DOCTYPE html>
@@ -13,8 +13,8 @@ and open the template in the editor.
          
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <%
@@ -59,24 +59,26 @@ and open the template in the editor.
 <!-- BREAKDOWN BLOCK START-->        
 <div>   
 <div class="label label-default"><h3>Breakdown</h3></div>      
-<select id="Breakdown" multiple>            
-        <option disabled>Mechanical</option>
-         <option>201 Feeder</option>
-         <option> 201 B Feeder</option>
-         <option>202 Belt Conveyor</option>
-         <option>203 Belt Conveyor</option>
-         <option>204 Belt Conveyor</option>
-        <option> 205 Belt Conveyor</option>
-         <option disabled>Electrical</option>
-         <option>201 Feeder</option>
-         <option>201 B Feeder</option>
-         <option>202 Belt Conveyor</option>
-         <option>203 Belt Conveyor</option>
-         <option>204 Belt Conveyor</option>
-         <option>205 Belt Conveyor</option>
-         <option>Maintenance</option>
-         <option>Others</option>               
-</select>   
+<select id="Breakdown" multiple>
+    <optgroup label="Mechanical">
+         <option>201 Feeder (mech)</option>
+         <option> 201 B Feeder (mech)</option>
+         <option>202 Belt Conveyor (mech)</option>
+         <option>203 Belt Conveyor (mech)</option>
+         <option>204 Belt Conveyor (mech)</option>
+        <option> 205 Belt Conveyor (mech)</option>
+    </optgroup>
+    <optgroup label="Electrical">
+         <option>201 Feeder (elec)</option>
+         <option>201 B Feeder (elec)</option>
+         <option>202 Belt Conveyor (elec)</option>
+         <option>203 Belt Conveyor (elec)</option>
+         <option>204 Belt Conveyor (elec)</option>
+         <option>205 Belt Conveyor (elec)</option>
+         <option>Maintenance (elec)</option>
+         <option>Others</option>  
+    </optgroup>
+</select>
 <button type='button' class='btn btn-primary' id='btnAddBreakdown'><i class="las la-plus-circle"></i> Add Breakdown</button>      
  <div>
      <table class="table hide" id='tblBreakdown'>
@@ -94,9 +96,9 @@ and open the template in the editor.
         <tbody>            
             <tr class='hide'>
                 <td>No Breakdown</td> 
-                <td><input type="number" step=".01" max="8" name="Break-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown -  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
-                <td><input type="number" step=".01" max="8"  name="Break-II" placeholder='Breakdown -  II'  shift='II' title="Breakdown -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
-                <td><input type="number" step=".01" max="8"  name="Break-III" placeholder='Breakdown -  III' shift='III' title="Breakdown -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
+                <td><input type="number" step=".01" max="8" name="Break-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown -  I"  onblur="calculateOnDateBreakdownOperationalDelay(this); return calTotalUtil(this)" ></td>
+                <td><input type="number" step=".01" max="8"  name="Break-II" placeholder='Breakdown -  II'  shift='II' title="Breakdown -  II"  onblur="calculateOnDateBreakdownOperationalDelay(this); return calTotalUtil(this)"  ></td>
+                <td><input type="number" step=".01" max="8"  name="Break-III" placeholder='Breakdown -  III' shift='III' title="Breakdown -  III"  onblur="calculateOnDateBreakdownOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Break-onDate" placeholder='Breakdown - ON-DATE' default value="0" title="Breakdown - ON-DATE" disabled ></td>
                 <td><input type="number" step=".01" name="Break-cum" placeholder='Breakdown - CUM' default value="0" title="Breakdown - CUM" disabled > </td>
                 <td><button type='button' class='btn btn-danger btn-sm' name='btnRemoveBreakdown' onclick="removeBreakdown(this)"><i class="las la-trash"></i> Remove</button></td>
@@ -138,9 +140,9 @@ and open the template in the editor.
         <tbody>            
             <tr class='hide'>
                 <td>No Operational_Delay</td> 
-                <td><input type="number" step=".01" max="8" name="Operational_Delay-I" placeholder='Operational_Delay -  I' shift='I'  title="Operational_Delay-  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
-                <td><input type="number" step=".01" max="8"  name="Operational_Delay-II" placeholder='Operational_Delay -  II'  shift='II' title="Operational_Delay -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
-                <td><input type="number" step=".01" max="8"  name="Operational_Delay-III" placeholder='Operational_Delay -  III' shift='III' title="Operational_Delay -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
+                <td><input type="number" step=".01" max="8" name="Operational_Delay-I" placeholder='Operational_Delay -  I' shift='I'  title="Operational_Delay -  I"  onblur="calculateOnDateBreakdownOperationalDelay(this); return calTotalUtil(this)" ></td>
+                <td><input type="number" step=".01" max="8"  name="Operational_Delay-II" placeholder='Operational_Delay -  II'  shift='II' title="Operational_Delay -  II"  onblur="calculateOnDateBreakdownOperationalDelay(this); return calTotalUtil(this)"  ></td>
+                <td><input type="number" step=".01" max="8"  name="Operational_Delay-III" placeholder='Operational_Delay -  III' shift='III' title="Operational_Delay -  III"  onblur="calculateOnDateBreakdownOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Operational_Delay-onDate" placeholder='Operational_Delay - ON-DATE' default value="0" title="Operational_Delay - ON-DATE" disabled ></td>
                 <td><input type="number" step=".01" name="Operational_Delay-cum" placeholder='Operational_Delay - CUM' default value="0" title="Operational_Delay - CUM" disabled > </td>
                 <td><button type='button' class='btn btn-danger btn-sm' name='Operational_Delay' onclick="removeOperational_Delay(this)"><i class="las la-trash"></i> Remove</button></td>
@@ -225,7 +227,7 @@ and open the template in the editor.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 
     <script type="text/javascript">
-        const SCHEDULED_HR =8;
+        const SCHEDULED_HR = 8;
         const SHIFTS = {
                 FIRSTSHIFT : "I",
                 SECONDSHIFT : "II",
@@ -281,7 +283,7 @@ and open the template in the editor.
          }  
        */  
             //update the ondate breakdown and Operational_Delay value based on change in shift's breakdown/Operational_Delay
-        function calculateOnDateOperationalDelay(field) {   
+        function calculateOnDateBreakdownOperationalDelay(field) {   
             let currentRow = $(field).closest("tr");
             let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
             let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;

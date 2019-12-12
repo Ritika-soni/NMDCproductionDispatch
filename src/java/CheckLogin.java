@@ -63,7 +63,7 @@ public class CheckLogin extends HttpServlet {
                 session.setAttribute("name",name);
                 response.sendRedirect("menu.jsp");                
             }else {
-                out.write("<center><p id='errMsg' style='color: red; font-size: larger;'>Credentials are incorrect.</p></center>");
+                out.write("<center><p id='errMsg' style='color: red; font-size: larger;'>Credentials are incorrect!!!</p></center>");
                 RequestDispatcher rdObj = null;
                 rdObj = request.getRequestDispatcher("/index.html");
                 rdObj.include(request, response);

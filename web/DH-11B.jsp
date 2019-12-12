@@ -58,20 +58,22 @@ and open the template in the editor.
          
 <!-- BREAKDOWN BLOCK START-->        
 <div>   
-<div class="label label-default"><h3>Breakdown</h3></div>      
-<select id="Breakdown" multiple>   
-     <option disabled>Mechanical</option>
-     <option>1115 Apron Feeder</option>	
-     <option>1116  Belt Conveyor</option>	
-     <option>1117 Belt Conveyor</option>	
-     <option>1120  Belt Conveyor</option>	
-     <option disabled>Electrical</option>	
-     <option>1115 Apron Feeder</option>	
-     <option>1116  Belt Conveyor</option>	
-     <option>1117 Belt Conveyor</option>	
-     <option>1120  Belt Conveyor</option>	
-     <option>Maintenance</option>	
-     <option>Others</option>	              
+<div class="label label-default"><h3>Breakdown</h3></div>  
+<select id="Breakdown" multiple>
+    <optgroup label="Mechanical">
+     <option>1115 Apron Feeder (mech)</option>	
+     <option>1116  Belt Conveyor (mech)</option>	
+     <option>1117 Belt Conveyor (mech)</option>	
+     <option>1120  Belt Conveyor (mech)</option>
+    </optgroup>
+    <optgroup label="Electrical">
+        <option>1115 Apron Feeder (elec)</option>	
+     <option>1116  Belt Conveyor (elec)</option>	
+     <option>1117 Belt Conveyor (elec)</option>	
+     <option>1120  Belt Conveyor (elec)</option>	
+     <option>Maintenance (elec)</option>	
+     <option>Others</option>	 
+    </optgroup>
 </select>   
 <button type='button' class='btn btn-primary' id='btnAddBreakdown'><i class="las la-plus-circle"></i> Add Breakdown</button>      
  <div>
@@ -90,7 +92,7 @@ and open the template in the editor.
         <tbody>            
             <tr class='hide'>
                 <td>No Breakdown</td> 
-                <td><input type="number" step=".01" max="8" name="Break-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown -  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
+                <td><input type="number" step=".01" max="8" name="Break-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown -  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this) " ></td>
                 <td><input type="number" step=".01" max="8"  name="Break-II" placeholder='Breakdown -  II'  shift='II' title="Breakdown -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
                 <td><input type="number" step=".01" max="8"  name="Break-III" placeholder='Breakdown -  III' shift='III' title="Breakdown -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Break-onDate" placeholder='Breakdown - ON-DATE' default value="0" title="Breakdown - ON-DATE" disabled ></td>
@@ -135,7 +137,7 @@ and open the template in the editor.
         <tbody>            
             <tr class='hide'>
                 <td>No Operational_Delay</td> 
-                <td><input type="number" step=".01" max="8" name="Operational_Delay-I" placeholder='Operational_Delay -  I' shift='I'  title="Operational_Delay-  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
+                <td><input type="number" step=".01" max="8" name="Operational_Delay-I" placeholder='Operational_Delay -  I' shift='I'  title="Operational_Delay-  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this) " ></td>
                 <td><input type="number" step=".01" max="8"  name="Operational_Delay-II" placeholder='Operational_Delay -  II'  shift='II' title="Operational_Delay -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
                 <td><input type="number" step=".01" max="8"  name="Operational_Delay-III" placeholder='Operational_Delay -  III' shift='III' title="Operational_Delay -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Operational_Delay-onDate" placeholder='Operational_Delay - ON-DATE' default value="0" title="Operational_Delay - ON-DATE" disabled ></td>

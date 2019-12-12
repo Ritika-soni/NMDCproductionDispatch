@@ -58,25 +58,27 @@ and open the template in the editor.
          
 <!-- BREAKDOWN BLOCK START-->        
 <div>   
-<div class="label label-default"><h3>Breakdown</h3></div>      
-<select id="Breakdown" multiple>            
-        <option disabled>Mechanical</option>
-         <option>201 Feeder</option>
-         <option> 201 B Feeder</option>
-         <option>202 Belt Conveyor</option>
-         <option>203 Belt Conveyor</option>
-         <option>204 Belt Conveyor</option>
-        <option> 205 Belt Conveyor</option>
-         <option disabled>Electrical</option>
-         <option>201 Feeder</option>
-         <option>201 B Feeder</option>
-         <option>202 Belt Conveyor</option>
-         <option>203 Belt Conveyor</option>
-         <option>204 Belt Conveyor</option>
-         <option>205 Belt Conveyor</option>
-         <option>Maintenance</option>
-         <option>Others</option>               
-</select>   
+<div class="label label-default"><h3>Breakdown</h3></div> 
+<select id="Breakdown" multiple>
+    <optgroup label="Mechanical">
+         <option>201 Feeder (mech)</option>
+         <option> 201 B Feeder (mech)</option>
+         <option>202 Belt Conveyor (mech)</option>
+         <option>203 Belt Conveyor (mech)</option>
+         <option>204 Belt Conveyor (mech)</option>
+         <option> 205 Belt Conveyor (mech)</option>
+    </optgroup>
+    <optgroup label="Electrical">
+       <option>201 Feeder (elec)</option>
+         <option>201 B Feeder (elec)</option>
+         <option>202 Belt Conveyor (elec)</option>
+         <option>203 Belt Conveyor (elec)</option>
+         <option>204 Belt Conveyor (elec)</option>
+         <option>205 Belt Conveyor (elec)</option>
+         <option>Maintenance (elec)</option>
+         <option>Others</option>  
+    </optgroup>
+</select>  
 <button type='button' class='btn btn-primary' id='btnAddBreakdown'><i class="las la-plus-circle"></i> Add Breakdown</button>      
  <div>
      <table class="table hide" id='tblBreakdown'>
@@ -94,7 +96,7 @@ and open the template in the editor.
         <tbody>            
              <tr class='hide'>
                 <td>No Breakdown</td> 
-                <td><input type="number" step=".01" max="8" name="Break-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown -  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
+                <td><input type="number" step=".01" max="8" name="Break-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown -  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01" max="8"  name="Break-II" placeholder='Breakdown -  II'  shift='II' title="Breakdown -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
                 <td><input type="number" step=".01" max="8"  name="Break-III" placeholder='Breakdown -  III' shift='III' title="Breakdown -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Break-onDate" placeholder='Breakdown - ON-DATE' default value="0" title="Breakdown - ON-DATE" disabled ></td>
@@ -138,7 +140,7 @@ and open the template in the editor.
         <tbody>            
             <tr class='hide'>
                 <td>No Operational_Delay</td> 
-                <td><input type="number" step=".01" max="8" name="Operational_Delay-I" placeholder='Operational_Delay -  I' shift='I'  title="Operational_Delay-  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this); " ></td>
+                <td><input type="number" step=".01" max="8" name="Operational_Delay-I" placeholder='Operational_Delay -  I' shift='I'  title="Operational_Delay-  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01" max="8"  name="Operational_Delay-II" placeholder='Operational_Delay -  II'  shift='II' title="Operational_Delay -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
                 <td><input type="number" step=".01" max="8"  name="Operational_Delay-III" placeholder='Operational_Delay -  III' shift='III' title="Operational_Delay -  III"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01"  name="Operational_Delay-onDate" placeholder='Operational_Delay - ON-DATE' default value="0" title="Operational_Delay - ON-DATE" disabled ></td>
@@ -242,7 +244,7 @@ and open the template in the editor.
         }
         
         //update the ondate feed value based on change in shift's feed
-        function calculateOnDateFeed(field) {  
+        function calculateOnDateWaste(field) {  
                 let currentRow = $(field).closest("tr");
                 const currentShift = $(field).attr("shift");
                 switch(currentShift){
