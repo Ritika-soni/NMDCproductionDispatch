@@ -104,6 +104,7 @@ and open the template in the editor.
         </thead>
         <tbody>            
              <tr class='hide'>
+        <br>
                 <td>No Breakdown</td> 
                 <td><input type="number" step=".01" max="8" name="Break-I" placeholder='Breakdown -  I' shift='I'  title="Breakdown -  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01" max="8"  name="Break-II" placeholder='Breakdown -  II'  shift='II' title="Breakdown -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
@@ -114,6 +115,9 @@ and open the template in the editor.
             </tr>
       </tbody>
      </table>
+      <br>
+     <label>Mention the reason for breakdown if required</label><br>
+     <input type='text' id="large_textbox" placeholder='Reason for breakdown' title="reason" >
  
 <!-- BREAKDOWN BLOCK ENDS-->
 
@@ -154,6 +158,7 @@ and open the template in the editor.
         </thead>
         <tbody>            
             <tr class='hide'>
+        <br>
                 <td>No Operational_Delay</td> 
                 <td><input type="number" step=".01" max="8" name="Operational_Delay-I" placeholder='Operational_Delay -  I' shift='I'  title="Operational_Delay-  I"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)" ></td>
                 <td><input type="number" step=".01" max="8"  name="Operational_Delay-II" placeholder='Operational_Delay -  II'  shift='II' title="Operational_Delay -  II"  onblur="calculateOnDateOperationalDelay(this); return calTotalUtil(this)"  ></td>
@@ -164,6 +169,9 @@ and open the template in the editor.
             </tr>
       </tbody>
      </table>
+      <br>
+     <label>Mention the reason for Operational Delay if required</label><br>
+     <input type='text' id="large_textbox" placeholder='Reason for Operational Delay' title="reason" >
  </div>
 </div>      
 <!-- OPERATIONAL DELAY BLOCK ENDS-->
@@ -221,7 +229,7 @@ and open the template in the editor.
       
       <div class="checkbox">
           <label>
-             <h5> <font color="red"> <input type="checkbox"> Check me out </font> </h5> 
+            <h5> <font color="red"> <input type="checkbox" class="largerCheckbox" required> <i class="las la-skiing-nordic la-lg"> Check me out </i> </font> </h5> 
           </label>
       </div>
      <center>

@@ -226,3 +226,15 @@ and open the template in the editor.
     transform: scale(1);
   }
 }
+
+.largerCheckbox
+{
+	width: 17px;
+	height: 17px;
+}
+
+#large_textbox{
+    font-size: 12pt;
+    height: 70px;
+    width: 1100px; 
+}
