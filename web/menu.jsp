@@ -56,7 +56,7 @@ and open the template in the editor.
         </div>
             <br>                
         <div class="container">
-            <div class="jumbotron">
+            <div class="jumbotron jumbotron-fluid">
                 <center><h1><u><font color="#1f0080">DAILY PRODUCTION & DISPATCH DETAILS</font></u></h1></center>
 
                 <br>
@@ -74,27 +74,15 @@ and open the template in the editor.
                         <!-- Modal content-->
                         <div class="modal-content">
                             
-                              <div class="modal-header">
-                                
-                                <h4 class="modal-title"><font color="black"><i class="las la-truck-monster">   Deposit</i></font></h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>
-                                    <a href="D-14.jsp" class="btn btn-danger" role="button" style="margin:25px;">D-14</a> 
-                                    <a href="D-11C.jsp" class="btn btn-danger" role="button" style="margin:25px;">D-11C</a> 
-                                    <a href="D-11B.jsp" class="btn btn-danger" role="button" style="margin:25px;">D-11B</a> 
-                                </p>
-                            </div>
-                            
                              <div class="modal-header">
                                 
                                 <h4 class="modal-title"><font color="black"><i class="las la-mortar-pestle">   Crushing Plant Department</i></font></h4>
                             </div>
                             <div class="modal-body">
                                 <p>
-                                   <a href="MINE CP-14.jsp" class="btn btn-danger" role="button" style="margin:25px;">CP-14</a>
-                                   <a href="MINE CP-11C.jsp" class="btn btn-danger" role="button" style="margin:25px;">CP-11C</a>
-                                   <a href="MINE CP-11B.jsp" class="btn btn-danger" role="button" style="margin:25px;">CP-11B</a> 
+                                   <a href="view_feed.jsp" class="btn btn-danger" role="button" style="margin:25px;">CP-14</a>
+                                   <a href="view_feed.jsp" class="btn btn-danger" role="button" style="margin:25px;">CP-11C</a>
+                                   <a href="view_feed.jsp" class="btn btn-danger" role="button" style="margin:25px;">CP-11B</a> 
                                 </p>
                             </div>
                             
@@ -104,9 +92,9 @@ and open the template in the editor.
                             </div>
                             <div class="modal-body">
                                 <p>
-                                    <a href="DH-14.jsp" class="btn btn-danger" role="button" style="margin:25px;">DH-14</a> 
-                                    <a href="DH-11C.jsp" class="btn btn-danger" role="button" style="margin:25px;">DH-11C</a> 
-                                    <a href="DH-11B.jsp" class="btn btn-danger" role="button" style="margin:25px;">DH-11B</a> 
+                                    <a href="view_feed.jsp" class="btn btn-danger" role="button" style="margin:25px;">DH-14</a> 
+                                    <a href="view_feed.jsp" class="btn btn-danger" role="button" style="margin:25px;">DH-11C</a> 
+                                    <a href="view_feed.jsp" class="btn btn-danger" role="button" style="margin:25px;">DH-11B</a> 
                                 </p>
                             </div>
                             
@@ -116,9 +104,9 @@ and open the template in the editor.
                             </div>
                             <div class="modal-body">
                                 <p>
-                                    <a href="SP_I.jsp" class="btn btn-danger" role="button" style="margin:25px;">SP-I</a>
-                                    <a href="SP_II.jsp" class="btn btn-danger" role="button" style="margin:25px;">SP-II</a>
-                                     <a href="TCP.jsp" class="btn btn-danger" role="button" style="margin:25px;">TCP</a>
+                                    <a href="view_feed.jsp" class="btn btn-danger" role="button" style="margin:25px;">SP-I</a>
+                                    <a href="view_feed.jsp" class="btn btn-danger" role="button" style="margin:25px;">SP-II</a>
+                                     <a href="view_feed.jsp" class="btn btn-danger" role="button" style="margin:25px;">TCP</a>
                                 </p>
                             </div>
                             <div class="modal-footer">

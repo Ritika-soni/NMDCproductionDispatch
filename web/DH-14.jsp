@@ -108,8 +108,8 @@ and open the template in the editor.
      </table>
      <br>
      <label>Mention the reason for breakdown if required</label><br>
-     <input type='text' id="large_textbox" placeholder='Reason for breakdown' title="reason" >
- 
+     <textarea class="form-control" id="large_textbox" placeholder='Reason for breakdown' title="reason" ></textarea>
+   
 <!-- BREAKDOWN BLOCK ENDS-->
 
 <!-- OPERATIONAL DELAY BLOCK START-->      
@@ -156,7 +156,8 @@ and open the template in the editor.
      </table>
       <br>
      <label>Mention the reason for Operational Delay if required</label><br>
-     <input type='text' id="large_textbox" placeholder='Reason for Operational Delay' title="reason" >
+     <textarea class="form-control" id="large_textbox" placeholder='Reason for Operational Delay' title="reason" ></textarea>
+     
  </div>
 </div>      
 <!-- OPERATIONAL DELAY BLOCK ENDS-->
@@ -219,7 +220,7 @@ and open the template in the editor.
       </div>
      <center>
        <button type="submit" class='btn btn-success btn-sm mr-3'>SUBMIT</button> 
-       <a  href="menu.jsp">Go Back</a>
+       <a  href="validation.jsp">Go Back</a>
      </center>             
    </form>
 
@@ -235,6 +236,7 @@ and open the template in the editor.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 
     <script type="text/javascript">
+      
         const SCHEDULED_HR = 8;
         const SHIFTS = {
                 FIRSTSHIFT : "I",

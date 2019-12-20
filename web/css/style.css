@@ -186,7 +186,6 @@ and open the template in the editor.
 }
 
 .jumbotron-fluid{
-    background-color: rgba(102,153,204,0.2);
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
@@ -237,4 +236,14 @@ and open the template in the editor.
     font-size: 12pt;
     height: 70px;
     width: 1100px; 
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
 }
