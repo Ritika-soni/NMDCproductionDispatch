@@ -7,148 +7,148 @@ and open the template in the editor.
     Created on : Sep 12, 2019, 4:30:23 PM
     Author     : Ritika Soni
 */
-    html,body {
-        background-image: radial-gradient(white, #8FA1D7); /* Standard syntax (must be last) */
-        background-repeat: no-repeat;
-        min-height: 100vh;
-        margin:0;
-        padding:0;
-    }
-    
-    .user_card {
-		height: 400px;
-		width: 350px;
-		margin-top: auto;
-		margin-bottom: auto;
-		background: #2ab1ce;
-		position: relative;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		padding: 10px;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		border-radius: 5px;
- 
-		}
-                
-      .brand_logo_container {
-		position: absolute;
-		height: 170px;
-		width: 170px;
-		top: -75px;
-		border-radius: 50%;
-		background: #C8C3C3;
-		padding: 10px;
-		text-align: center;
-		}
-        .brand_logo {
-		height: 150px;
-		width: 150px;
-		border-radius: 50%;
-		border: 2px solid white;
-		}
+html,body {
+    background-image: radial-gradient(white, #8FA1D7); /* Standard syntax (must be last) */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin:0;
+    padding:0;
+}
 
-        .form_container {
-		margin-top: 100px;
-		}
-	.login_btn {
-		width: 100%;
-		background: #4d4d4d !important;
-		color: white !important;
-		}
-        .login_btn:focus {
-            box-shadow: none !important;
-            outline: 0px !important;
-        }
-        .login_container {
-            padding: 0 2rem;
-        }        
-                
-    h1 {
-        font-family:arial; 
-        color:red;
-        text-decoration: underline;
-        text-align: center;
-    }
+.user_card {
+    height: 400px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #2ab1ce;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
 
-    h4 {
-        font-family: helvetica; 
-        font-weight: bold;
-        color:green;
-        text-decoration: underline;
-        text-align: center;
-    }
-    
-    .red-text {
-        font-family: helvetica; 
-        font-weight: bold;
-        color:red;
-        text-decoration: underline;
-        text-align: center;
-  }
-  
-    validate {                                         
-        margin-left: 70px; 
-        font-weight: bold ; 
-        float: left; 
-        clear: left; 
-        width: 100px; 
-        text-align: left; 
-        margin-right: 10px; 
-        font-family:sans-serif,bold, Arial, Helvetica; 
-        font-size:14px; 
-    } 
+}
 
-   .register  {
-        color: white;
-        text-decoration: none;
-        background-color: transparent;
-        -webkit-text-decoration-skip: objects;
-    }
-    
-    a:hover {
+.brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    background: #C8C3C3;
+    padding: 10px;
+    text-align: center;
+}
+.brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.form_container {
+    margin-top: 100px;
+}
+.login_btn {
+    width: 100%;
+    background: #4d4d4d !important;
+    color: white !important;
+}
+.login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+.login_container {
+    padding: 0 2rem;
+}        
+
+h1 {
+    font-family:arial; 
+    color:red;
+    text-decoration: underline;
+    text-align: center;
+}
+
+h4 {
+    font-family: helvetica; 
+    font-weight: bold;
+    color:green;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.red-text {
+    font-family: helvetica; 
+    font-weight: bold;
+    color:red;
+    text-decoration: underline;
+    text-align: center;
+}
+
+validate {                                         
+    margin-left: 70px; 
+    font-weight: bold ; 
+    float: left; 
+    clear: left; 
+    width: 100px; 
+    text-align: left; 
+    margin-right: 10px; 
+    font-family:sans-serif,bold, Arial, Helvetica; 
+    font-size:14px; 
+} 
+
+.register  {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
     color: red;
-  }
-    
-    .register:hover {
-        color: white;
-        transform: scale(1.1);
-    }
-    
- .center {
+}
+
+.register:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+.center {
     text-align: center;
     list-style-position: inside;
-  }
-  
-  #regForm table {     
-      margin: 0 auto;
-      width: 70%;
-  }
-  
-  
-  #regForm table td:nth-child(1) {
-      width:30%
-  }
-  
-  #message {
-      color:red;
-      font-style: italic;
-      text-align: center;
-      margin:0 auto;
-      display: block;
-      
-  }
-  
-  input[type='checkbox'] {
-      margin-left: 10px;
-  }  
-   
-  /* Hide the row*/
-  .hide {
-      display:none;
-  }
-  
-  .heading {
+}
+
+#regForm table {     
+    margin: 0 auto;
+    width: 70%;
+}
+
+
+#regForm table td:nth-child(1) {
+    width:30%
+}
+
+#message {
+    color:red;
+    font-style: italic;
+    text-align: center;
+    margin:0 auto;
+    display: block;
+
+}
+
+input[type='checkbox'] {
+    margin-left: 10px;
+}  
+
+/* Hide the row*/
+.hide {
+    display:none;
+}
+
+.heading {
     color: #1f0080;
     text-decoration: underline;    
     text-align: center;
@@ -162,8 +162,8 @@ and open the template in the editor.
 .date {
     font-size: 1.75rem;
 }
-  
-  div .label {
+
+div .label {
     display: block;
     padding:0;
 } 
@@ -175,10 +175,10 @@ and open the template in the editor.
 }
 
 .logo-container{
-  margin: auto;
-  margin-bottom: 10px;
-  width:200px;
-  height:30px;  
+    margin: auto;
+    margin-bottom: 10px;
+    width:200px;
+    height:30px;  
 }
 
 .var{
@@ -189,47 +189,47 @@ and open the template in the editor.
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
- #rect {
+#rect {
 
-  animation-name: colorful;
-  animation-duration: 20s;
+    animation-name: colorful;
+    animation-duration: 20s;
 }
 
 @keyframes colorful {
-  0% {
-    background-color: blue;
-  }
-  50%{
-      background-color: yellow;
-  }
-  100% {
-    background-color: green;
-  }
+    0% {
+        background-color: blue;
+    }
+    50%{
+        background-color: yellow;
+    }
+    100% {
+        background-color: green;
+    }
 }
 
 #bounce {
-  animation-duration: 2s;
-  animation-name: bounceIn;
+    animation-duration: 2s;
+    animation-name: bounceIn;
 }
 
 @keyframes bounceIn {
-  0% {
-    transform: scale(0.1);
-    opacity: 0;
-  }
-  60% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .largerCheckbox
 {
-	width: 17px;
-	height: 17px;
+    width: 17px;
+    height: 17px;
 }
 
 #large_textbox{
@@ -239,11 +239,40 @@ and open the template in the editor.
 }
 
 .dropdown-submenu {
-  position: relative;
+    position: relative;
 }
 
 .dropdown-submenu .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -1px;
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
 }
+#Dh_color1{
+    background-color: #8BB381;
+}
+#Dh_color2{
+    background-color: #B2C248;
+}
+#Dh_color3{
+    background-color: #A1C935;
+}
+#cp_color1{
+    background-color: #E78A61;
+}
+#cp_color2{
+    background-color: #F88158; 
+}
+#cp_color3{
+    background-color: #F9966B;
+}
+#sp1_color{
+    background-color: #B38481;
+}
+#sp2_color{
+    background-color: #C48189;
+}
+#tcp_color{
+    background-color: #E8ADAA;
+}
+
+
