@@ -193,6 +193,7 @@ div .label {
 
     animation-name: colorful;
     animation-duration: 20s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes colorful {
@@ -202,7 +203,7 @@ div .label {
     50%{
         background-color: yellow;
     }
-    100% {
+    70% {
         background-color: green;
     }
 }
@@ -274,5 +275,13 @@ div .label {
 #tcp_color{
     background-color: #E8ADAA;
 }
+.table td {
+    text-align: center;
+}
 
+.table {
+    border-radius: 5px;
+    width: 50%;
+    float: none;
+}
 

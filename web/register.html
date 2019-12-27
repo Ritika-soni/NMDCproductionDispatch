@@ -10,79 +10,95 @@
 
     <body> 
         <div class="container">
-        <a href="help.jsp" class='float-right btn btn-info'>?Help</a> 
+        <a href="help.jsp" class='float-right btn btn-info'>Help?</a> 
+        <br>
+        </br>
+        <br>
+        </br>
+        <div class='container jumbotron jumbotron-fluid' style="background-color:#D3E0A9;"> 
         <center>
-        <IMG SRC="images/NMDC_LOGO1.JPG" ALT="nmdc logo" class='nmdcLogo'>
+         <img src="./images/logo.png" class="brand_logo" alt="Logo">
         </center>
     <br>
+    
     <label class='message'></label>
     <h1>REGISTRATION FORM</h1>
-             
-        <form action="register"  method="post" id='regForm'>
-            <table >
-                <tr>
-                    <td>FIRST NAME:</td>
-                    <td><input type='text' name='firstname' id = 'firstname'  pattern="^[A-Za-z]{1,10}$" placeholder='First name' title="Employee First name" required>
-                        (max 10 characters a-z or A-Z)
-                    </td>
-                </tr>
-                <tr>
-                    <td>LAST NAME:</td>
-                    <td><input type='text' name='lastname' id = 'lastname'  pattern="^[A-Za-z]{1,10}$" placeholder='Last name' title="Employee Last name" required>
-                        (max 10 characters a-z or A-Z)
-                    </td>
-                </tr>
-                <tr>
-                    <td>TOKEN NO:</td>
-                    <td><input type='text' name='tokenno' pattern="^[A-Z]\d{4}$" placeholder='Token No Ex. A1111' title="Employee Token No" required>
-                        (eg: A1111)
-                    </td>
-                </tr>
-                <tr>
-                    <td>PASSWORD:</td>
-                    <td><input id ="password" type='password' name='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title="Employee Password" required>
-                        (Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters)
-                    </td>
-                </tr>
-                <tr>
-                    <td>CONFIRM PASSWORD:</td>
-                    <td><input id ="confirmpassword" type='password' name='confirmpassword'  placeholder='Confirm Password' title="Employee confirm Password" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>DOB:</td>
-                    <td><input type='date' name='dob' title="Employee date of birth" required ></td>
-                </tr>
-            </table>
+          
+    <form action="register"  method="post" id='regForm'>
+        
+        <table  class="table table-hover text-centered">
+            
+            <tr>
+                <td>FIRST NAME:<span  style="color:red"> *</span></td>
+                <td><input type='text' name='firstname' id = 'firstname'  pattern="^[A-Za-z]{1,10}$" placeholder='Employee First name' title="(max 10 characters a-z or A-Z)" required>
 
-            <center>
-                <button type="submit" class='btn btn-success btn-sm mr-3' onclick="return validatePasswords()">Sign Up</button> 
-            </center>
-        </form>   
+                </td>
+            </tr>
+            <tr>
+                <td>LAST NAME:<span  style="color:red"> *</span></td>
+                <td><input type='text' name='lastname' id = 'lastname'  pattern="^[A-Za-z]{1,10}$" placeholder='Employee Last name' title="(max 10 characters a-z or A-Z)" required>
+
+                </td>
+            </tr>
+            
+             <tr>
+                <td>DOB:</td>
+                <td><input type='date' name='dob' title="Employee date of birth" required ></td>
+            </tr>
+            
+            <tr>
+                <td>TOKEN NO:<span  style="color:red"> *</span></td>
+                <td><input type='text' name='tokenno' pattern="^[A-Z]\d{4}$" placeholder='Employee Token No' title="(eg: A1111)" required>
+
+                </td>
+            </tr>
+            <tr>
+                <td>PASSWORD:<span  style="color:red"> *</span></td>
+                <td><input id ="password" type='password' name='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title="Your password must have at least :
+                  8 characters length,
+                  1 uppercase & 1 lowercase character,
+                  1 number" required>
+
+                </td>
+            </tr>
+            <tr>
+                <td>CONFIRM PASSWORD:<span  style="color:red"> *</span></td>
+                <td><input id ="confirmpassword" type='password' name='confirmpassword'  placeholder='Confirm Password' title="Employee confirm Password" required>
+                </td>
+            </tr>
            
-            <script type="text/javascript">
-                function validatePasswords(){
-                    let password = document.getElementById("password");
-                    let confirmPassword = document.getElementById("confirmpassword");
-                    if(password.value !== confirmPassword.value) {
-                      alert("Password and Confirm Password don't match!");
-                      return false;
-                    }
+        </table>
+        
+        <br>
+        <center>
+            <button type="submit" class='btn btn-success btn-sm mr-3' onclick="return validatePasswords()">Sign Up</button> 
+        </center>
+    </form>   
+        </div>
+
+        <script type="text/javascript">
+            function validatePasswords(){
+                let password = document.getElementById("password");
+                let confirmPassword = document.getElementById("confirmpassword");
+                if(password.value !== confirmPassword.value) {
+                  alert("Password and Confirm Password don't match!");
+                  return false;
                 }
-            </script>
-       
-            <center>
+            }
+        </script>
+
+        <center>
             <br>
             <p>Already having an Account
-            <a href="./index.html" class='btn btn-warning btn-sm'>Log in.</a> 
-            
-            <p>
-            </center>
-            <center>
-            <br>
-            
+                <a href="./index.html" class='btn btn-warning btn-sm'>Log in.</a> 
 
-            </center>
-    </div>
+            <p>
+        </center>
+        <center>
+            <br>
+
+
+        </center>
+        </div>
     </body> 
 </html> 

@@ -205,7 +205,7 @@ and open the template in the editor.
     </div>
     <footer>
         <center>
-            <p>developer:c&it</p>
+            <p>developer: nmdc@c&it</p>
         </center>
     </footer>
 
