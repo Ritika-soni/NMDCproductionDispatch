@@ -299,242 +299,252 @@ and open the template in the editor.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 
     <script type="text/javascript">
-                           const SCHEDULED_HR = 8;
-                           const SHIFTS = {
-                           FIRSTSHIFT : "I",
-                                   SECONDSHIFT : "II",
-                                   THIRDSHIFT: 'III'
-                           }
+        const SCHEDULED_HR =8;
+        const SHIFTS = {
+                FIRSTSHIFT : "I",
+                SECONDSHIFT : "II",
+                THIRDSHIFT: 'III'
+        }
+            
+        this.stateObj = {
+            currentShift: SHIFTS.FIRSTSHIFT,
+            currentFeed : 0,
+            currentUtlHr : 0,
+            currentOperational_Delay : 0,
+            currentBreakdown :0,
+            onDateBreakdownAndOperational_Delay:0
+        }
+        
+        //update the ondate feed value based on change in shift's feed
+        function calculateOnDateProduction(field) {  
+                let currentRow = $(field).closest("tr");
+                const currentShift = $(field).attr("shift");
+                switch(currentShift){
+                    case "I" : this.stateObj.currentShift = SHIFTS.FIRSTSHIFT;
+                              break;
+                    case "II" : this.stateObj.currentShift = SHIFTS.SECONDSHIFT;
+                               break;
+                    case "III" : this.stateObj.currentShift = SHIFTS.THIRDSHIFT;
+                               break;
+                }
+                let first =  parseInt($("input[id$='_I']",currentRow).val()) ||0 ;
+                let second =  parseInt($("input[id$='_II']",currentRow).val()) ||0;
+                let third =  parseInt($("input[id$='_III']",currentRow).val())||0;              
+                let calOnDate = first + second + third;
+                $("input[id$='_onDate']",currentRow).val(calOnDate);               
+         } 
+         
+  /*      //update the ondate breakdown value based on change in shift's breakdown
+        function calculateOnDateBreakdown(field) {   
+            let currentRow = $(field).closest("tr");
+            let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
+            let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
+            let third =  parseFloat($("input[name$='-III']",currentRow).val())||0;              
+            let calOnDate = first + second + third;
+            $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
+         } 
+         
+          //update the ondate Operational_Delay value based on change in shift's breakdown
+        function calculateOnDateOperational_Delay(field) {   
+            let currentRow = $(field).closest("tr");
+            let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
+            let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
+            let third =  parseFloat($("input[name$='-III']",currentRow).val())||0;              
+            let calOnDate = first + second + third;
+            $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
+         }  
+       */  
+            //update the ondate breakdown and Operational_Delay value based on change in shift's breakdown/Operational_Delay
+        function calculateOnDateOperationalDelay(field) {   
+            let currentRow = $(field).closest("tr");
+            let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
+            let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
+            let third =  parseFloat($("input[name$='-III']",currentRow).val()) ||0;              
+            let calOnDate = first + second + third;
+            $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
+         }  
+                  
+            //calculates total of the Breakdown for the shift
+           function calTotalBreakdownAndOperational_Delay(curObj) { 
+                let total=0; 
+                //const currentShift = $(curObj).attr("shift");
+                const currentShift =  this.stateObj.currentShift;
+                let breakdownAndOperational_DelayFields = $('#tblOperational_Delay tr,#tblBreakdown tr').not('.hide').find('input[shift="'+currentShift+'"]'); 
+                breakdownAndOperational_DelayFields.each((index,reason) => {
+                       total += parseFloat(reason.value)||0;
+                 });
+                 
+                if(total > SCHEDULED_HR ){
+                 alert("Verify that the total Breakdown + Operational_Delay should not be more than"+ SCHEDULED_HR+ " hrs");  
+                 $(curObj).val('');
+                 return false;
+                }
+                return total.toFixed(2);
+            }
+                    
+            //updates the utilisation hour for the shfit
+            function calTotalUtil(curObj) {
+                let utilHr = (SCHEDULED_HR - calTotalBreakdownAndOperational_Delay(curObj)).toFixed(2);
+                let currentShift = $(curObj).attr("shift");        
+                let currentShiftUtilId = "UTL_"+currentShift;
+                document.getElementById(currentShiftUtilId).value = utilHr;
+                
+                let utilI = document.querySelector("#UTL_I").value;
+                let utilII = document.querySelector("#UTL_II").value;
+                let utilIII = document.querySelector("#UTL_III").value;
+                let utilOnDate = document.querySelector("#UTL_onDate");
+                
+                let totalUtil = parseFloat(utilI) + parseFloat(utilII)+ parseFloat(utilIII);
+                utilOnDate.value = totalUtil.toFixed(2);
+                updateUtilizationProgress();
+           }     
+   
+    
+        function checkExist(compareText, tblName) { 
+         let isExist = false;
+         let selector = "#"+tblName+" tbody tr"; 
+         $(selector).find("td:first").each( (index,column) => { 
+         let a = $(column).html();
+         if(a === compareText) { 
+           isExist = true;
+         }
+        });
+        return isExist;
+        }
 
-                   this.stateObj = {
-                   currentShift: SHIFTS.FIRSTSHIFT,
-                           currentFeed : 0,
-                           currentUtlHr : 0,
-                           currentOperational_Delay : 0,
-                           currentBreakdown :0,
-                           onDateBreakdownAndOperational_Delay:0
-                   }
 
-                   //update the ondate feed value based on change in shift's feed
-                   function calculateOnDateProduction(field) {
-                   let currentRow = $(field).closest("tr");
-                           const currentShift = $(field).attr("shift");
-                           switch (currentShift){
-                   case "I" : this.stateObj.currentShift = SHIFTS.FIRSTSHIFT;
-                           break;
-                           case "II" : this.stateObj.currentShift = SHIFTS.SECONDSHIFT;
-                           break;
-                           case "III" : this.stateObj.currentShift = SHIFTS.THIRDSHIFT;
-                           break;
-                   }
-                   let first = parseInt($("input[id$='_I']", currentRow).val()) || 0;
-                           let second = parseInt($("input[id$='_II']", currentRow).val()) || 0;
-                           let third = parseInt($("input[id$='_III']", currentRow).val()) || 0;
-                           let calOnDate = first + second + third;
-                           $("input[id$='_onDate']", currentRow).val(calOnDate);
-                   }
-
-                   /*      //update the ondate breakdown value based on change in shift's breakdown
-                    function calculateOnDateBreakdown(field) {   
-                    let currentRow = $(field).closest("tr");
-                    let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
-                    let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
-                    let third =  parseFloat($("input[name$='-III']",currentRow).val())||0;              
-                    let calOnDate = first + second + third;
-                    $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
-                    } 
-                     
-                    //update the ondate Operational_Delay value based on change in shift's breakdown
-                    function calculateOnDateOperational_Delay(field) {   
-                    let currentRow = $(field).closest("tr");
-                    let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
-                    let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
-                    let third =  parseFloat($("input[name$='-III']",currentRow).val())||0;              
-                    let calOnDate = first + second + third;
-                    $("input[name$='-onDate']",currentRow).val(calOnDate.toFixed(2));
-                    }  
-                    */
-                   //update the ondate breakdown and Operational_Delay value based on change in shift's breakdown/Operational_Delay
-                   function calculateOnDateOperationalDelay(field) {
-                   let currentRow = $(field).closest("tr");
-                           let first = parseFloat($("input[name$='-I']", currentRow).val()) || 0;
-                           let second = parseFloat($("input[name$='-II']", currentRow).val()) || 0;
-                           let third = parseFloat($("input[name$='-III']", currentRow).val()) || 0;
-                           let calOnDate = first + second + third;
-                           $("input[name$='-onDate']", currentRow).val(calOnDate.toFixed(2));
-                   }
-
-                   //calculates total of the Breakdown for the shift
-                   function calTotalBreakdownAndOperational_Delay(curObj) {
-                   let total = 0;
-                           //const currentShift = $(curObj).attr("shift");
-                           const currentShift = this.stateObj.currentShift;
-                           let breakdownAndOperational_DelayFields = $('#tblOperational_Delay tr,#tblBreakdown tr').not('.hide').find('input[shift="' + currentShift + '"]');
-                           breakdownAndOperational_DelayFields.each((index, reason) = > {
-                           total += parseFloat(reason.value) || 0;
-                           });
-                           if (total > SCHEDULED_HR){
-                   alert("Verify that the total Breakdown + Operational_Delay should not be more than" + SCHEDULED_HR + " hrs");
-                           $(curObj).val('');
-                           return false;
-                   }
-                   return total.toFixed(2);
-                   }
-
-                   //updates the utilisation hour for the shfit
-                   function calTotalUtil(curObj) {
-                   let utilHr = (SCHEDULED_HR - calTotalBreakdownAndOperational_Delay(curObj)).toFixed(2);
-                           let currentShift = $(curObj).attr("shift");
-                           let currentShiftUtilId = "UTL_" + currentShift;
-                           document.getElementById(currentShiftUtilId).value = utilHr;
-                           let utilI = document.querySelector("#UTL_I").value;
-                           let utilII = document.querySelector("#UTL_II").value;
-                           let utilIII = document.querySelector("#UTL_III").value;
-                           let utilOnDate = document.querySelector("#UTL_onDate");
-                           let totalUtil = parseFloat(utilI) + parseFloat(utilII) + parseFloat(utilIII);
-                           utilOnDate.value = totalUtil.toFixed(2);
-                           updateUtilizationProgress();
-                   }
-
-
-                   function checkExist(compareText, tblName) {
-                   let isExist = false;
-                           let selector = "#" + tblName + " tbody tr";
-                           $(selector).find("td:first").each((index, column) = > {
-                   let a = $(column).html();
-                           if (a === compareText) {
-                   isExist = true;
-                   }
-                   });
-                           return isExist;
-                   }
-
-
-                   $("#btnAddBreakdown").on("click", function () {
-                   let selected = $("#Breakdown").val();
-                           if (!selected) {
-                   alert("select atleast one breakdown reason to be added");
-                           return;
-                   }
-                   for (let i = 0; i < selected.length; i++){
-                   if (!checkExist(selected[i], "tblBreakdown")) {
-                   let row = $("#tblBreakdown tbody tr:first").clone(false);
-                           $(row).removeClass('hide');
-                           $("#tblBreakdown").removeClass('hide');
-                           $(row).find('td')[0].innerText = selected[i];
-                           $("#tblBreakdown tbody").append(row);
-                   }
-                   }
+        $("#btnAddBreakdown").on("click", function () {
+            let selected = $("#Breakdown").val();  
+            if(!selected ) {
+                alert("select atleast one breakdown reason to be added");
+                return;
+            }
+            for(let i=0;i<selected.length;i++){ 
+                if(!checkExist(selected[i],"tblBreakdown")) {       
+                    let row = $("#tblBreakdown tbody tr:first").clone(false);
+                    $(row).removeClass('hide');
+                    $("#tblBreakdown").removeClass('hide');
+                    $(row).find('td')[0].innerText = selected[i];
+                    $("#tblBreakdown tbody").append(row);
+                   }     
+                }
+            });       
+            
+         $("#btnAddOperational_Delays").on("click", function () {
+            let selected = $("#Operational_Delay").val();  
+            if(!selected ) {
+                alert("select atleast one Operational_Delay reason to be added");
+                return;
+            }
+            for(let i=0;i<selected.length;i++){ 
+                if(!checkExist(selected[i],"tblOperational_Delay")) {       
+                    let row = $("#tblOperational_Delay tbody tr:first").clone(false);
+                    $(row).removeClass('hide');
+                    $("#tblOperational_Delay").removeClass('hide');
+                    $(row).find('td')[0].innerText = selected[i];
+                    $("#tblOperational_Delay tbody").append(row);
+                   }     
+                }
+            });    
+        
+        function removeBreakdown(btn) { 
+            let row = $(btn).closest("tr")
+            let breakdownType = $(row).find("td:first").html();
+            $(btn).closest("tr",row).remove();
+            $('#Breakdown').multiselect('deselect', [breakdownType]); 
+            const countRows = $('#tblBreakdown').find("tr").length;
+            if(countRows <3) { //one header row , second hidden row
+                $("#tblBreakdown").addClass('hide');                
+            }
+            let firstShiftObj = $(row).find("td:nth-child(2) > input",row) ;
+            let secondShiftObj = $(row).find("td:nth-child(3)> input",row) ;
+            let thirdShiftObj = $(row).find("td:nth-child(4)> input",row) ;
+            calTotalUtil(firstShiftObj);
+            calTotalUtil(secondShiftObj);
+            calTotalUtil(thirdShiftObj);
+        }    
+        
+         function removeOperational_Delay(btn) {
+            let row = $(btn).closest("tr")
+            let Operational_DelayType = $(row).find("td:first").html();
+            $(btn).closest("tr",row).remove();
+            $('#Operational_Delay').multiselect('deselect', [Operational_DelayType]); 
+            const countRows = $('#tblOperational_Delay').find("tr").length;
+            if(countRows <3) { //one header row , second hidden row
+                $("#tblOperational_Delay").addClass('hide');                
+            }
+            let firstShiftObj = $(row).find("td:nth-child(2) > input",row) ;
+            let secondShiftObj = $(row).find("td:nth-child(3)> input",row) ;
+            let thirdShiftObj = $(row).find("td:nth-child(4)> input",row) ;
+            calTotalUtil(firstShiftObj);
+            calTotalUtil(secondShiftObj);
+            calTotalUtil(thirdShiftObj);
+        }    
+              
+    
+      //calculates total of the Breakdown for the shift
+        /*    function calTotalBreakdown(curObj) {            
+                let total=0;
+                let currentName = $(curObj).prop("name");
+                const breakdownFieldSelector = "[name="+ currentName+ "]"
+                let breakdownFields = $(breakdownFieldSelector).not(":first");
+                breakdownFields.each((index,breakdown) => {                
+                  total += parseFloat(breakdown.value)||0;
+                 });
+                 
+                if(total > SCHEDULED_HR ){
+                 alert("Verify that the total Breakdown should not be more than" SCHEDULED_HR+" hrs");  
+                 $(curObj).val('');
+                 calculateOnDateBreakdown(curObj);
+                 return false;
+                }
+                return total.toFixed(2);
+               }
+               */
+        function updateUtilizationProgress() {
+            
+            const currentShift = this.stateObj.currentShift;
+            let onDateUtil = parseFloat(document.querySelector("#UTL_onDate").value);
+            let utilPer = 0;
+            let availHrs = 0;
+            if(currentShift === 'I') {
+                availHrs = SCHEDULED_HR;
+            } else if(currentShift === 'II') {
+                availHrs = SCHEDULED_HR * 2;
+            } else {
+                availHrs = SCHEDULED_HR * 3;
+            }                 
+            console.log("availHrs",availHrs);
+            utilPer = ((onDateUtil)*100/availHrs).toFixed(2);
+              
+            //let utilOnDate = parseFloat(document.querySelector("#UTL_onDate").value).toFixed(2);
+            //let util = (utilOnDate/parseInt(SCHEDULED_HR * 3) *100).toFixed(2) +"%";
+            let util = utilPer +"%";
+            let utilizationText = "Utilization : "+util+" till "+this.stateObj.currentShift + " shift";
+            $("div .progress-bar").text(utilizationText);
+            $("div .progress-bar").width(util)
+        }
+                   
+        $(function() {            
+        
+            $('#Breakdown').multiselect({
+                includeSelectAllOption: true,
+                nonSelectedText: 'No Breakdown',
+                numberDisplayed: 1,        
+                enableCaseInsensitiveFiltering: true,        
             });
-                           $("#btnAddOperational_Delays").on("click", function () {
-                   let selected = $("#Operational_Delay").val();
-                           if (!selected) {
-                   alert("select atleast one Operational_Delay reason to be added");
-                           return;
-                   }
-                   for (let i = 0; i < selected.length; i++){
-                   if (!checkExist(selected[i], "tblOperational_Delay")) {
-                   let row = $("#tblOperational_Delay tbody tr:first").clone(false);
-                           $(row).removeClass('hide');
-                           $("#tblOperational_Delay").removeClass('hide');
-                           $(row).find('td')[0].innerText = selected[i];
-                           $("#tblOperational_Delay tbody").append(row);
-                   }
-                   }
-               });
-                           function removeBreakdown(btn) {
-                           let row = $(btn).closest("tr")
-                                   let breakdownType = $(row).find("td:first").html();
-                                   $(btn).closest("tr", row).remove();
-                                   $('#Breakdown').multiselect('deselect', [breakdownType]);
-                                   const countRows = $('#tblBreakdown').find("tr").length;
-                                   if (countRows < 3) { //one header row , second hidden row
-                           $("#tblBreakdown").addClass('hide');
-                           }
-                           let firstShiftObj = $(row).find("td:nth-child(2) > input", row);
-                                   let secondShiftObj = $(row).find("td:nth-child(3)> input", row);
-                                   let thirdShiftObj = $(row).find("td:nth-child(4)> input", row);
-                                   calTotalUtil(firstShiftObj);
-                                   calTotalUtil(secondShiftObj);
-                                   calTotalUtil(thirdShiftObj);
-                           }
-
-                   function removeOperational_Delay(btn) {
-                   let row = $(btn).closest("tr")
-                           let Operational_DelayType = $(row).find("td:first").html();
-                           $(btn).closest("tr", row).remove();
-                           $('#Operational_Delay').multiselect('deselect', [Operational_DelayType]);
-                           const countRows = $('#tblOperational_Delay').find("tr").length;
-                           if (countRows < 3) { //one header row , second hidden row
-                   $("#tblOperational_Delay").addClass('hide');
-                   }
-                   let firstShiftObj = $(row).find("td:nth-child(2) > input", row);
-                           let secondShiftObj = $(row).find("td:nth-child(3)> input", row);
-                           let thirdShiftObj = $(row).find("td:nth-child(4)> input", row);
-                           calTotalUtil(firstShiftObj);
-                           calTotalUtil(secondShiftObj);
-                           calTotalUtil(thirdShiftObj);
-                   }
-
-
-                   //calculates total of the Breakdown for the shift
-                   /*    function calTotalBreakdown(curObj) {            
-                    let total=0;
-                    let currentName = $(curObj).prop("name");
-                    const breakdownFieldSelector = "[name="+ currentName+ "]"
-                    let breakdownFields = $(breakdownFieldSelector).not(":first");
-                    breakdownFields.each((index,breakdown) => {                
-                    total += parseFloat(breakdown.value)||0;
-                    });
-                     
-                    if(total > SCHEDULED_HR ){
-                    alert("Verify that the total Breakdown should not be more than" SCHEDULED_HR+" hrs");  
-                    $(curObj).val('');
-                    calculateOnDateBreakdown(curObj);
-                    return false;
-                    }
-                    return total.toFixed(2);
-                    }
-                    */
-                   function updateUtilizationProgress() {
-
-                   const currentShift = this.stateObj.currentShift;
-                           let onDateUtil = parseFloat(document.querySelector("#UTL_onDate").value);
-                           let utilPer = 0;
-                           let availHrs = 0;
-                           if (currentShift === 'I') {
-                   availHrs = SCHEDULED_HR;
-                   } else if (currentShift === 'II') {
-                   availHrs = SCHEDULED_HR * 2;
-                   } else {
-                   availHrs = SCHEDULED_HR * 3;
-                   }
-                   console.log("availHrs", availHrs);
-                           utilPer = ((onDateUtil) * 100 / availHrs).toFixed(2);
-                           //let utilOnDate = parseFloat(document.querySelector("#UTL_onDate").value).toFixed(2);
-                           //let util = (utilOnDate/parseInt(SCHEDULED_HR * 3) *100).toFixed(2) +"%";
-                           let util = utilPer + "%";
-                           let utilizationText = "Utilization : " + util + " till " + this.stateObj.currentShift + " shift";
-                           $("div .progress-bar").text(utilizationText);
-                           $("div .progress-bar").width(util)
-                   }
-
-                   $(function() {
-
-                   $('#Breakdown').multiselect({
-                   includeSelectAllOption: true,
-                           nonSelectedText: 'No Breakdown',
-                           numberDisplayed: 1,
-                           enableCaseInsensitiveFiltering: true,
-                   });
-                           $('#Operational_Delay').multiselect({
-                   includeSelectAllOption: true,
-                           nonSelectedText: 'No Operational Delay',
-                           numberDisplayed: 1,
-                           enableCaseInsensitiveFiltering: true,
-                   });
-                   });
-    </script>  
+            
+            $('#Operational_Delay').multiselect({
+                includeSelectAllOption: true,
+                nonSelectedText: 'No Operational Delay',
+                numberDisplayed: 1,        
+                enableCaseInsensitiveFiltering: true,        
+            });
+            
+                 
+            
+          });
+        </script>  
 
 
 </body>
