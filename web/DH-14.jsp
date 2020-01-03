@@ -257,7 +257,7 @@ and open the template in the editor.
         }
         
         //update the ondate feed value based on change in shift's feed
-        function calculateOnDateProduction(field) {  
+        function calculateOnDateFeed(field) {  
                 let currentRow = $(field).closest("tr");
                 const currentShift = $(field).attr("shift");
                 switch(currentShift){
@@ -296,7 +296,7 @@ and open the template in the editor.
          }  
        */  
             //update the ondate breakdown and Operational_Delay value based on change in shift's breakdown/Operational_Delay
-        function calculateOnDateOperationalDelay(field) {   
+        function calculateOnDateBreakdownOperationalDelay(field) {   
             let currentRow = $(field).closest("tr");
             let first =  parseFloat($("input[name$='-I']",currentRow).val()) ||0 ;
             let second =  parseFloat($("input[name$='-II']",currentRow).val()) ||0;
