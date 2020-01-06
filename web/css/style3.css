@@ -1,0 +1,34 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 4, 2020, 4:26:07 PM
+    Author     : Administrator
+*/
+.html,body {
+    background-image: radial-gradient(#B8D9F0, black); /* Standard syntax (must be last) */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin:0;
+    padding:0;
+}
+.center_align{
+    text-align: center;
+}
+
+[class^=char]{
+  display: inline-block !important;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+}
+ .pull-right {
+    float: right;
+}
+
+.text-color{
+    background-color: #1A5276;
+}
+

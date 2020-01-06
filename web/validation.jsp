@@ -33,6 +33,8 @@ and open the template in the editor.
                                 <br>
                                 <hr>
                                 <i class="las la-angle-double-left"></i> &nbsp;<a  href="view_feed.jsp">Go Back</a>
+                                <br>
+                                <i class="las la-angle-double-left"></i> &nbsp;<a  href="master.jsp">master</a>
                             </div>
                        </form>
                 </center>    
