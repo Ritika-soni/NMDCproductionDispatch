@@ -31,4 +31,17 @@ and open the template in the editor.
 .text-color{
     background-color: #1A5276;
 }
-
+#sidebar{
+    width: 150px;
+    height: 400px;
+    background: #27ae60;
+    float: left;
+}
+ul li{
+    padding: 17px;
+    border-bottom: 2px solid grey;
+}
+ul li:hover{
+    background: black;
+    color: white;
+}
