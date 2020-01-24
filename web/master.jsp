@@ -54,10 +54,10 @@ and open the template in the editor.
              <br>
              <h5><label><u>Departments:</u></label></h5>
             <ul>
-                <li>Crushing Plant</li>
-                <li>Down Hill</li>
-                <li>Screening Plant</li>
-                <li>Tertiary Crushing Plant</li>
+                <li>(CP) Crushing Plant</li>
+                <li>(DH) Down Hill</li>
+                <li>(SP) Screening Plant</li>
+                <li>(TCP) Tertiary Crushing Plant</li>
             </ul>
         </div>
         <br>
