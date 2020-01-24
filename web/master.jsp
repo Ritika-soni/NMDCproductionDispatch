@@ -39,7 +39,7 @@ and open the template in the editor.
             </ol>
         </nav>
         <form class="form-inline my-2 my-lg-0 pull-right">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2 search_button" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
@@ -122,58 +122,40 @@ and open the template in the editor.
         <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
         <script>
     // split text
-Splitting(); // => letters are '<div>' wrapped!
+    Splitting(); // => letters are '<div>' wrapped!
 
-// ref obj
-var OBJ = 'h2 > div span';
+            // ref obj
+            var OBJ = 'h2 > div span';
 
-// total nr of letters
-var ntCh = OBJ.length;
+            // total nr of letters
+            var ntCh = OBJ.length;
 
-// cos (index) => y
-function curveY(i){
-  var n = i / ntCh * 6.24;
-  return (Math.cos(n)) * -200;
-}
+            // cos (index) => y
+            function curveY(i){
+              var n = i / ntCh * 6.24;
+              return (Math.cos(n)) * -200;
+            }
 
-// sin (index) => x
-function curveX(i){
-  var n = i / ntCh * 6.24;
-  return (Math.sin(n)) * -200;
-}
+            // sin (index) => x
+            function curveX(i){
+              var n = i / ntCh * 6.24;
+              return (Math.sin(n)) * -200;
+            }
 
-// new timeline ref
-var tl = new TimelineMax({delay:.5, repeat:-1 });
+            // new timeline ref
+            var tl = new TimelineMax({delay:.5, repeat:0 });
 
-// color array helper
-var arr = ["#008954","#0077be","#a9d046","#00b0f0","#a93056","#ee3338","#f89734","#ffd925","#973989","#cb92a6"];
+            // color array helper
+            var arr = ["#008954","#0077be","#a9d046","#00b0f0","#a93056","#ee3338","#f89734","#ffd925","#973989","#cb92a6"];
 
-// ZIGZAG letters 
-tl.staggerFrom( OBJ , 1, {
-	cycle:{ 
-		y:curveY, 
-	},
-	x:-100, opacity:0
-}, .03);
-// ZIPPER letters
-tl.staggerTo( OBJ , 3, { 
-	cycle:{
-		y:[-80, 80],
-		color: arr,
-		skewY:[ 20, -20],
-		skewX:[ -20, 20],
-	}, 
-}, .05, "+=1" );
-
-// sin curve out
-
-tl.staggerTo( OBJ , 2, { 
-	cycle: { 
-		x: curveY,
-		y: curveX, 
-	},
-	color: "#fff"
-}, .03, "+=1" );
+            // ZIGZAG letters 
+            tl.staggerFrom( OBJ , 1, {
+                    cycle:{ 
+                            y:curveY, 
+                    },
+                    x:-100, opacity:0
+            }, .05);
+           
 
 </script>
 </body>
